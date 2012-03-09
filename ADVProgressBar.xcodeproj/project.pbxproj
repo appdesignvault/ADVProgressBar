@@ -1,0 +1,281 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ECE9A478150A435E0076F0C5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECE9A477150A435E0076F0C5 /* UIKit.framework */; };
+		ECE9A47A150A435E0076F0C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECE9A479150A435E0076F0C5 /* Foundation.framework */; };
+		ECE9A47C150A435E0076F0C5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECE9A47B150A435E0076F0C5 /* CoreGraphics.framework */; };
+		ECE9A482150A435E0076F0C5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ECE9A480150A435E0076F0C5 /* InfoPlist.strings */; };
+		ECE9A484150A435E0076F0C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE9A483150A435E0076F0C5 /* main.m */; };
+		ECE9A488150A435E0076F0C5 /* ADVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE9A487150A435E0076F0C5 /* ADVAppDelegate.m */; };
+		ECE9A48B150A435F0076F0C5 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECE9A489150A435F0076F0C5 /* MainStoryboard.storyboard */; };
+		ECE9A48E150A435F0076F0C5 /* ADVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE9A48D150A435F0076F0C5 /* ADVViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		ECE9A473150A435E0076F0C5 /* ADVProgressBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ADVProgressBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECE9A477150A435E0076F0C5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		ECE9A479150A435E0076F0C5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		ECE9A47B150A435E0076F0C5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		ECE9A47F150A435E0076F0C5 /* ADVProgressBar-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ADVProgressBar-Info.plist"; sourceTree = "<group>"; };
+		ECE9A481150A435E0076F0C5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		ECE9A483150A435E0076F0C5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		ECE9A485150A435E0076F0C5 /* ADVProgressBar-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ADVProgressBar-Prefix.pch"; sourceTree = "<group>"; };
+		ECE9A486150A435E0076F0C5 /* ADVAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADVAppDelegate.h; sourceTree = "<group>"; };
+		ECE9A487150A435E0076F0C5 /* ADVAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADVAppDelegate.m; sourceTree = "<group>"; };
+		ECE9A48A150A435F0076F0C5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		ECE9A48C150A435F0076F0C5 /* ADVViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADVViewController.h; sourceTree = "<group>"; };
+		ECE9A48D150A435F0076F0C5 /* ADVViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADVViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ECE9A470150A435E0076F0C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECE9A478150A435E0076F0C5 /* UIKit.framework in Frameworks */,
+				ECE9A47A150A435E0076F0C5 /* Foundation.framework in Frameworks */,
+				ECE9A47C150A435E0076F0C5 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ECE9A468150A435E0076F0C5 = {
+			isa = PBXGroup;
+			children = (
+				ECE9A47D150A435E0076F0C5 /* ADVProgressBar */,
+				ECE9A476150A435E0076F0C5 /* Frameworks */,
+				ECE9A474150A435E0076F0C5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		ECE9A474150A435E0076F0C5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ECE9A473150A435E0076F0C5 /* ADVProgressBar.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ECE9A476150A435E0076F0C5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ECE9A477150A435E0076F0C5 /* UIKit.framework */,
+				ECE9A479150A435E0076F0C5 /* Foundation.framework */,
+				ECE9A47B150A435E0076F0C5 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ECE9A47D150A435E0076F0C5 /* ADVProgressBar */ = {
+			isa = PBXGroup;
+			children = (
+				ECE9A486150A435E0076F0C5 /* ADVAppDelegate.h */,
+				ECE9A487150A435E0076F0C5 /* ADVAppDelegate.m */,
+				ECE9A489150A435F0076F0C5 /* MainStoryboard.storyboard */,
+				ECE9A48C150A435F0076F0C5 /* ADVViewController.h */,
+				ECE9A48D150A435F0076F0C5 /* ADVViewController.m */,
+				ECE9A47E150A435E0076F0C5 /* Supporting Files */,
+			);
+			path = ADVProgressBar;
+			sourceTree = "<group>";
+		};
+		ECE9A47E150A435E0076F0C5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				ECE9A47F150A435E0076F0C5 /* ADVProgressBar-Info.plist */,
+				ECE9A480150A435E0076F0C5 /* InfoPlist.strings */,
+				ECE9A483150A435E0076F0C5 /* main.m */,
+				ECE9A485150A435E0076F0C5 /* ADVProgressBar-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ECE9A472150A435E0076F0C5 /* ADVProgressBar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ECE9A491150A435F0076F0C5 /* Build configuration list for PBXNativeTarget "ADVProgressBar" */;
+			buildPhases = (
+				ECE9A46F150A435E0076F0C5 /* Sources */,
+				ECE9A470150A435E0076F0C5 /* Frameworks */,
+				ECE9A471150A435E0076F0C5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ADVProgressBar;
+			productName = ADVProgressBar;
+			productReference = ECE9A473150A435E0076F0C5 /* ADVProgressBar.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ECE9A46A150A435E0076F0C5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = ECE9A46D150A435E0076F0C5 /* Build configuration list for PBXProject "ADVProgressBar" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = ECE9A468150A435E0076F0C5;
+			productRefGroup = ECE9A474150A435E0076F0C5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ECE9A472150A435E0076F0C5 /* ADVProgressBar */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ECE9A471150A435E0076F0C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECE9A482150A435E0076F0C5 /* InfoPlist.strings in Resources */,
+				ECE9A48B150A435F0076F0C5 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ECE9A46F150A435E0076F0C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECE9A484150A435E0076F0C5 /* main.m in Sources */,
+				ECE9A488150A435E0076F0C5 /* ADVAppDelegate.m in Sources */,
+				ECE9A48E150A435F0076F0C5 /* ADVViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		ECE9A480150A435E0076F0C5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ECE9A481150A435E0076F0C5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		ECE9A489150A435F0076F0C5 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ECE9A48A150A435F0076F0C5 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		ECE9A48F150A435F0076F0C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		ECE9A490150A435F0076F0C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ECE9A492150A435F0076F0C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ADVProgressBar/ADVProgressBar-Prefix.pch";
+				INFOPLIST_FILE = "ADVProgressBar/ADVProgressBar-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		ECE9A493150A435F0076F0C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ADVProgressBar/ADVProgressBar-Prefix.pch";
+				INFOPLIST_FILE = "ADVProgressBar/ADVProgressBar-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ECE9A46D150A435E0076F0C5 /* Build configuration list for PBXProject "ADVProgressBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ECE9A48F150A435F0076F0C5 /* Debug */,
+				ECE9A490150A435F0076F0C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ECE9A491150A435F0076F0C5 /* Build configuration list for PBXNativeTarget "ADVProgressBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ECE9A492150A435F0076F0C5 /* Debug */,
+				ECE9A493150A435F0076F0C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ECE9A46A150A435E0076F0C5 /* Project object */;
+}
