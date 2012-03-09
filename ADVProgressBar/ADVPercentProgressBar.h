@@ -1,5 +1,5 @@
 //
-//  ADVViewController.m
+//  ADVPercentProgressBar.h
 //  ADVProgressBar
 //
 //
@@ -25,57 +25,32 @@
  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
- */
+*/
 
-#import "ADVViewController.h"
+#import <Foundation/Foundation.h>
 
-@implementation ADVViewController
+typedef enum
+{       
+    greenBar,
+    redBar,
+    brownBar,
+    blueBar
+} ADVProgressBarColor;
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
+@interface ADVPercentProgressBar : UIView {
+@private
+    
+    UIView* percentView;    
+    
+    UIImageView *bgImageView;
+    
+    UIImageView *progressImageView;
+    
+    UIImage *progressFillImage;
 }
 
-#pragma mark - View lifecycle
+@property (nonatomic, readwrite, assign) CGFloat progress;
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-	[super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-	[super viewDidDisappear:animated];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-}
+-(NSString*)getImageNameFromBarDefinition:(ADVProgressBarColor)barDef;
 
 @end

@@ -15,6 +15,19 @@
 		ECE9A488150A435E0076F0C5 /* ADVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE9A487150A435E0076F0C5 /* ADVAppDelegate.m */; };
 		ECE9A48B150A435F0076F0C5 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECE9A489150A435F0076F0C5 /* MainStoryboard.storyboard */; };
 		ECE9A48E150A435F0076F0C5 /* ADVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE9A48D150A435F0076F0C5 /* ADVViewController.m */; };
+		ECE9A4A5150A446C0076F0C5 /* progress-count.png in Resources */ = {isa = PBXBuildFile; fileRef = ECE9A499150A446C0076F0C5 /* progress-count.png */; };
+		ECE9A4A6150A446C0076F0C5 /* progress-count@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECE9A49A150A446C0076F0C5 /* progress-count@2x.png */; };
+		ECE9A4A7150A446C0076F0C5 /* progress-fill-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = ECE9A49B150A446C0076F0C5 /* progress-fill-blue.png */; };
+		ECE9A4A8150A446C0076F0C5 /* progress-fill-blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECE9A49C150A446C0076F0C5 /* progress-fill-blue@2x.png */; };
+		ECE9A4A9150A446C0076F0C5 /* progress-fill-brown.png in Resources */ = {isa = PBXBuildFile; fileRef = ECE9A49D150A446C0076F0C5 /* progress-fill-brown.png */; };
+		ECE9A4AA150A446C0076F0C5 /* progress-fill-brown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECE9A49E150A446C0076F0C5 /* progress-fill-brown@2x.png */; };
+		ECE9A4AB150A446C0076F0C5 /* progress-fill-green.png in Resources */ = {isa = PBXBuildFile; fileRef = ECE9A49F150A446C0076F0C5 /* progress-fill-green.png */; };
+		ECE9A4AC150A446C0076F0C5 /* progress-fill-green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECE9A4A0150A446C0076F0C5 /* progress-fill-green@2x.png */; };
+		ECE9A4AD150A446C0076F0C5 /* progress-fill-red.png in Resources */ = {isa = PBXBuildFile; fileRef = ECE9A4A1150A446C0076F0C5 /* progress-fill-red.png */; };
+		ECE9A4AE150A446C0076F0C5 /* progress-fill-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECE9A4A2150A446C0076F0C5 /* progress-fill-red@2x.png */; };
+		ECE9A4AF150A446C0076F0C5 /* progress-track.png in Resources */ = {isa = PBXBuildFile; fileRef = ECE9A4A3150A446C0076F0C5 /* progress-track.png */; };
+		ECE9A4B0150A446C0076F0C5 /* progress-track@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECE9A4A4150A446C0076F0C5 /* progress-track@2x.png */; };
+		ECE9A4B4150A44970076F0C5 /* ADVPercentProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE9A4B3150A44970076F0C5 /* ADVPercentProgressBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +44,20 @@
 		ECE9A48A150A435F0076F0C5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		ECE9A48C150A435F0076F0C5 /* ADVViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADVViewController.h; sourceTree = "<group>"; };
 		ECE9A48D150A435F0076F0C5 /* ADVViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADVViewController.m; sourceTree = "<group>"; };
+		ECE9A499150A446C0076F0C5 /* progress-count.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progress-count.png"; sourceTree = "<group>"; };
+		ECE9A49A150A446C0076F0C5 /* progress-count@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progress-count@2x.png"; sourceTree = "<group>"; };
+		ECE9A49B150A446C0076F0C5 /* progress-fill-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progress-fill-blue.png"; sourceTree = "<group>"; };
+		ECE9A49C150A446C0076F0C5 /* progress-fill-blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progress-fill-blue@2x.png"; sourceTree = "<group>"; };
+		ECE9A49D150A446C0076F0C5 /* progress-fill-brown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progress-fill-brown.png"; sourceTree = "<group>"; };
+		ECE9A49E150A446C0076F0C5 /* progress-fill-brown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progress-fill-brown@2x.png"; sourceTree = "<group>"; };
+		ECE9A49F150A446C0076F0C5 /* progress-fill-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progress-fill-green.png"; sourceTree = "<group>"; };
+		ECE9A4A0150A446C0076F0C5 /* progress-fill-green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progress-fill-green@2x.png"; sourceTree = "<group>"; };
+		ECE9A4A1150A446C0076F0C5 /* progress-fill-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progress-fill-red.png"; sourceTree = "<group>"; };
+		ECE9A4A2150A446C0076F0C5 /* progress-fill-red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progress-fill-red@2x.png"; sourceTree = "<group>"; };
+		ECE9A4A3150A446C0076F0C5 /* progress-track.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progress-track.png"; sourceTree = "<group>"; };
+		ECE9A4A4150A446C0076F0C5 /* progress-track@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progress-track@2x.png"; sourceTree = "<group>"; };
+		ECE9A4B2150A44970076F0C5 /* ADVPercentProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADVPercentProgressBar.h; path = ADVProgressBar/ADVPercentProgressBar.h; sourceTree = "<group>"; };
+		ECE9A4B3150A44970076F0C5 /* ADVPercentProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADVPercentProgressBar.m; path = ADVProgressBar/ADVPercentProgressBar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +77,9 @@
 		ECE9A468150A435E0076F0C5 = {
 			isa = PBXGroup;
 			children = (
+				ECE9A4B2150A44970076F0C5 /* ADVPercentProgressBar.h */,
+				ECE9A4B3150A44970076F0C5 /* ADVPercentProgressBar.m */,
+				ECE9A498150A446C0076F0C5 /* Resources */,
 				ECE9A47D150A435E0076F0C5 /* ADVProgressBar */,
 				ECE9A476150A435E0076F0C5 /* Frameworks */,
 				ECE9A474150A435E0076F0C5 /* Products */,
@@ -96,6 +126,26 @@
 				ECE9A485150A435E0076F0C5 /* ADVProgressBar-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ECE9A498150A446C0076F0C5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				ECE9A499150A446C0076F0C5 /* progress-count.png */,
+				ECE9A49A150A446C0076F0C5 /* progress-count@2x.png */,
+				ECE9A49B150A446C0076F0C5 /* progress-fill-blue.png */,
+				ECE9A49C150A446C0076F0C5 /* progress-fill-blue@2x.png */,
+				ECE9A49D150A446C0076F0C5 /* progress-fill-brown.png */,
+				ECE9A49E150A446C0076F0C5 /* progress-fill-brown@2x.png */,
+				ECE9A49F150A446C0076F0C5 /* progress-fill-green.png */,
+				ECE9A4A0150A446C0076F0C5 /* progress-fill-green@2x.png */,
+				ECE9A4A1150A446C0076F0C5 /* progress-fill-red.png */,
+				ECE9A4A2150A446C0076F0C5 /* progress-fill-red@2x.png */,
+				ECE9A4A3150A446C0076F0C5 /* progress-track.png */,
+				ECE9A4A4150A446C0076F0C5 /* progress-track@2x.png */,
+			);
+			name = Resources;
+			path = ADVProgressBar/Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,6 +200,18 @@
 			files = (
 				ECE9A482150A435E0076F0C5 /* InfoPlist.strings in Resources */,
 				ECE9A48B150A435F0076F0C5 /* MainStoryboard.storyboard in Resources */,
+				ECE9A4A5150A446C0076F0C5 /* progress-count.png in Resources */,
+				ECE9A4A6150A446C0076F0C5 /* progress-count@2x.png in Resources */,
+				ECE9A4A7150A446C0076F0C5 /* progress-fill-blue.png in Resources */,
+				ECE9A4A8150A446C0076F0C5 /* progress-fill-blue@2x.png in Resources */,
+				ECE9A4A9150A446C0076F0C5 /* progress-fill-brown.png in Resources */,
+				ECE9A4AA150A446C0076F0C5 /* progress-fill-brown@2x.png in Resources */,
+				ECE9A4AB150A446C0076F0C5 /* progress-fill-green.png in Resources */,
+				ECE9A4AC150A446C0076F0C5 /* progress-fill-green@2x.png in Resources */,
+				ECE9A4AD150A446C0076F0C5 /* progress-fill-red.png in Resources */,
+				ECE9A4AE150A446C0076F0C5 /* progress-fill-red@2x.png in Resources */,
+				ECE9A4AF150A446C0076F0C5 /* progress-track.png in Resources */,
+				ECE9A4B0150A446C0076F0C5 /* progress-track@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +225,7 @@
 				ECE9A484150A435E0076F0C5 /* main.m in Sources */,
 				ECE9A488150A435E0076F0C5 /* ADVAppDelegate.m in Sources */,
 				ECE9A48E150A435F0076F0C5 /* ADVViewController.m in Sources */,
+				ECE9A4B4150A44970076F0C5 /* ADVPercentProgressBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +337,7 @@
 				ECE9A493150A435F0076F0C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
