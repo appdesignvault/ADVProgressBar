@@ -28,8 +28,12 @@
  */
 
 #import "ADVViewController.h"
+#import "ADVPercentProgressBar.h"
+
 
 @implementation ADVViewController
+
+@synthesize progressBars;
 
 - (void)didReceiveMemoryWarning
 {
@@ -41,8 +45,63 @@
 
 - (void)viewDidLoad
 {
+    
+    ADVPercentProgressBar *blueprogressBar = [[ADVPercentProgressBar alloc] initWithFrame:CGRectMake(10, 30, 292, 28) andProgressBarColor:ADVProgressBarBlue];
+    
+    [blueprogressBar setProgress:0.5];
+    
+    [self.view addSubview:blueprogressBar];
+    
+    
+    
+    ADVPercentProgressBar *greenprogressBar = [[ADVPercentProgressBar alloc] initWithFrame:CGRectMake(10, 80, 292, 28) andProgressBarColor:ADVProgressBarGreen];
+    
+    [greenprogressBar setProgress:0.5];
+    
+    [self.view addSubview:greenprogressBar];
+    
+    
+    ADVPercentProgressBar *redProgressBar = [[ADVPercentProgressBar alloc] initWithFrame:CGRectMake(10, 130, 292, 28) andProgressBarColor:ADVProgressBarRed];
+    
+    [redProgressBar setProgress:0.5];
+    
+    [self.view addSubview:redProgressBar];
+    
+    
+    ADVPercentProgressBar *brownProgressPar = [[ADVPercentProgressBar alloc] initWithFrame:CGRectMake(10, 180, 292, 28) andProgressBarColor:ADVProgressBarBrown];
+    
+    [brownProgressPar setProgress:0.5];
+    
+    [self.view addSubview:brownProgressPar];
+    
+    
+    progressBars = [NSArray arrayWithObjects:blueprogressBar, redProgressBar, greenprogressBar, brownProgressPar, nil];
+    
+    
+    UISlider* slider = [[UISlider alloc] initWithFrame:CGRectMake(10, 230, 292, 28)];
+    
+    [slider setMaximumValue:1.0];
+    [slider setMinimumValue:0.0];
+    [slider setValue:0.5];
+    [slider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    
+    [self.view addSubview:slider];
+    
+    [self.view setBackgroundColor:[UIColor colorWithHue:0.0 saturation:0.0 brightness:0.93 alpha:1.0]];
+    
+    
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+}
+
+
+-(IBAction)sliderValueChanged:(UISlider*)sender
+{
+    for (ADVPercentProgressBar * progressBar in progressBars) 
+    {
+        [progressBar setProgress:sender.value];
+    }
 }
 
 - (void)viewDidUnload

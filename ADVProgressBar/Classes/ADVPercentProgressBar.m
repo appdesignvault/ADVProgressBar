@@ -125,17 +125,17 @@
     NSString* imageName;
     
     switch (barDef) {
-        case greenBar:
+        case ADVProgressBarBlue:
             imageName = @"progress-fill-blue.png";
             break;
-        case redBar:
+        case ADVProgressBarRed:
             imageName = @"progress-fill-red.png";
             break;
-        case blueBar:
-            imageName = @"progress-fill-blue.png";
-            break;
-        case brownBar:
+        case ADVProgressBarBrown:
             imageName = @"progress-fill-brown.png";
+            break;
+        case ADVProgressBarGreen:
+            imageName = @"progress-fill-green.png";
             break;
         default:
             imageName = @"progress-fill-green.png";

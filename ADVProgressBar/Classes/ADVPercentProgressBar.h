@@ -31,10 +31,10 @@
 
 typedef enum
 {       
-    greenBar,
-    redBar,
-    brownBar,
-    blueBar
+    ADVProgressBarGreen,
+    ADVProgressBarRed,
+    ADVProgressBarBrown,
+    ADVProgressBarBlue
 } ADVProgressBarColor;
 
 @interface ADVPercentProgressBar : UIView {
@@ -50,6 +50,8 @@ typedef enum
 }
 
 @property (nonatomic, readwrite, assign) CGFloat progress;
+
+- (id)initWithFrame:(CGRect)frame andProgressBarColor:(ADVProgressBarColor)barColor;
 
 -(NSString*)getImageNameFromBarDefinition:(ADVProgressBarColor)barDef;
 

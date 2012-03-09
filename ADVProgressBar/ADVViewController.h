@@ -31,4 +31,9 @@
 
 @interface ADVViewController : UIViewController
 
+
+@property (nonatomic, strong) NSArray* progressBars;
+
+-(IBAction)sliderValueChanged:(UISlider*)sender;
+
 @end
