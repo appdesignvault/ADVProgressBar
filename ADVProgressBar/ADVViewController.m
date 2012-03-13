@@ -6,7 +6,8 @@
 /*
  The MIT License
  
- Copyright (c) 2011 Tope Abayomi
+ Copyright (c) 2011 Tope Abayomi 
+ http://www.appdesignvault.com/
  
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -88,11 +89,36 @@
     
     [self.view addSubview:slider];
     
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 280, 292, 28)];
+    [label setText:@"Move the slider to see the Progress bars in action"];
+    [label setBackgroundColor:[UIColor clearColor]];
+    [label setFont:[UIFont systemFontOfSize:12]];
+    
+    [self.view addSubview:label];
+    
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 420, 320, 40)];
+    
+    [webView setBackgroundColor:[UIColor clearColor]];
+    [webView setOpaque:NO];
+    [webView setDelegate:self];
+    [webView loadHTMLString:@"<a href='http://www.appdesignvault.com'>http://www.appdesignvault.com</a>" baseURL:nil];
+    
+    [self.view addSubview:webView];
+    
     [self.view setBackgroundColor:[UIColor colorWithHue:0.0 saturation:0.0 brightness:0.93 alpha:1.0]];
     
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+}
+
+-(BOOL) webView:(UIWebView *)inWeb shouldStartLoadWithRequest:(NSURLRequest *)inRequest navigationType:(UIWebViewNavigationType)inType {
+    if ( inType == UIWebViewNavigationTypeLinkClicked ) {
+        [[UIApplication sharedApplication] openURL:[inRequest URL]];
+        return NO;
+    }
+    
+    return YES;
 }
 
 
