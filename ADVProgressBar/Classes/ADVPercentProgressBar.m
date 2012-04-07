@@ -32,7 +32,6 @@
 #define RIGHT_PADDING 3.0f
 
 #import "ADVPercentProgressBar.h"
-#import "ADVAppDelegate.h"
 
 @implementation ADVPercentProgressBar
 
