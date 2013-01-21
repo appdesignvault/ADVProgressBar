@@ -38,19 +38,15 @@ typedef enum
     ADVProgressBarBlue
 } ADVProgressBarColor;
 
-@interface ADVPercentProgressBar : UIView {
-@private
-    
-    UIView* percentView;    
-    
-    UIImageView *bgImageView;
-    
-    UIImageView *progressImageView;
-    
-    UIImage *progressFillImage;
-}
+@interface ADVPercentProgressBar : UIView
 
 @property (nonatomic, readwrite, assign) CGFloat progress;
+
+@property (nonatomic, readwrite, assign) CGFloat minProgressValue;
+
+@property (nonatomic, readwrite, assign) CGFloat maxProgressValue;
+
+@property (nonatomic, readwrite, assign) bool showPercentage;
 
 - (id)initWithFrame:(CGRect)frame andProgressBarColor:(ADVProgressBarColor)barColor;
 

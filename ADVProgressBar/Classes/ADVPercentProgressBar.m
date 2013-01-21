@@ -33,7 +33,16 @@
 
 #import "ADVPercentProgressBar.h"
 
+
 @implementation ADVPercentProgressBar
+{
+    UIView* percentView;
+    UIImageView *bgImageView;
+    UIImageView *progressImageView;
+    UIImage *progressFillImage;
+    CGFloat progressRange;
+}
+
 
 @synthesize progress;
 
@@ -79,6 +88,11 @@
         [self addSubview:percentView];
         
         self.progress = 0.0f;
+        self.showPercentage = true;
+        self.minProgressValue = 0.0f;
+        self.maxProgressValue = 100.0f;
+        progressRange = self.maxProgressValue - self.minProgressValue;
+
     }
     
     return self;
@@ -89,9 +103,12 @@
     
     if (self.progress != theProgress) {
         
-        if (theProgress >= 0 && theProgress <= 1) {
+        // check range
+        if (theProgress >= self.minProgressValue && theProgress <= self.maxProgressValue) {
             
             progress = theProgress;
+            
+            CGFloat percentProgress = (progress - self.minProgressValue) / progressRange;
             
             progressImageView.image = progressFillImage;
             
@@ -101,7 +118,7 @@
             frame.origin.y = 2;
             frame.size.height = bgImageView.frame.size.height - 4;
             
-            frame.size.width = (bgImageView.frame.size.width - 4) * progress;
+            frame.size.width = (bgImageView.frame.size.width - 4) * percentProgress;
             
             progressImageView.frame = frame;
             
@@ -114,7 +131,13 @@
             percentView.frame = percentFrame;
             
             UILabel* percentLabel = (UILabel*)[percentView viewWithTag:1];
-            [percentLabel setText:[NSString  stringWithFormat:@"%d%%", (int)(progress*100)]];
+            if (self.showPercentage) {
+                [percentLabel setText:[NSString  stringWithFormat:@"%d%%", (int)(percentProgress*100)]];
+            }
+            else {
+                // show value
+                [percentLabel setText:[NSString  stringWithFormat:@"%d", (int)(percentProgress*100)]];
+            }
             
         }
     }
