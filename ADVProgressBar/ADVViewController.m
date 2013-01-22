@@ -34,7 +34,6 @@
 
 @implementation ADVViewController
 
-@synthesize progressBars;
 
 - (void)didReceiveMemoryWarning
 {
@@ -50,34 +49,42 @@
     ADVPercentProgressBar *blueprogressBar = [[ADVPercentProgressBar alloc] initWithFrame:CGRectMake(10, 30, 292, 28) andProgressBarColor:ADVProgressBarBlue];
     
     [blueprogressBar setShowPercentage:false];
-    [blueprogressBar setProgress:50];
+    [blueprogressBar setMinProgressValue:0];
+    [blueprogressBar setMaxProgressValue:500];
+    [blueprogressBar setProgress:[blueprogressBar minProgressValue] +
+                        ([blueprogressBar maxProgressValue]-[blueprogressBar minProgressValue])/2];
     
     [self.view addSubview:blueprogressBar];
     
     
-    
     ADVPercentProgressBar *greenprogressBar = [[ADVPercentProgressBar alloc] initWithFrame:CGRectMake(10, 80, 292, 28) andProgressBarColor:ADVProgressBarGreen];
     
-    [greenprogressBar setProgress:50];
+    [greenprogressBar setProgress:0.5];
     
     [self.view addSubview:greenprogressBar];
     
     
     ADVPercentProgressBar *redProgressBar = [[ADVPercentProgressBar alloc] initWithFrame:CGRectMake(10, 130, 292, 28) andProgressBarColor:ADVProgressBarRed];
     
-    [redProgressBar setProgress:50];
+    [redProgressBar setShowPercentage:false];
+    [redProgressBar setMinProgressValue:200];
+    [redProgressBar setMaxProgressValue:400];
+    [redProgressBar setProgress:[redProgressBar minProgressValue] +
+                        ([redProgressBar maxProgressValue]-[redProgressBar minProgressValue])/2];
     
     [self.view addSubview:redProgressBar];
     
     
     ADVPercentProgressBar *brownProgressPar = [[ADVPercentProgressBar alloc] initWithFrame:CGRectMake(10, 180, 292, 28) andProgressBarColor:ADVProgressBarBrown];
     
-    [brownProgressPar setProgress:50];
+    [brownProgressPar setProgress:0.5];
     
     [self.view addSubview:brownProgressPar];
     
     
-    progressBars = [NSArray arrayWithObjects:blueprogressBar, redProgressBar, greenprogressBar, brownProgressPar, nil];
+    self.valueProgressBars = [NSArray arrayWithObjects:blueprogressBar, redProgressBar, nil];
+    
+    self.percentProgressBars = [NSArray arrayWithObjects:greenprogressBar, brownProgressPar, nil];
     
     
     UISlider* slider = [[UISlider alloc] initWithFrame:CGRectMake(10, 230, 292, 28)];
@@ -125,9 +132,14 @@
 
 -(IBAction)sliderValueChanged:(UISlider*)sender
 {
-    for (ADVPercentProgressBar * progressBar in progressBars) 
+    for (ADVPercentProgressBar * valueProgressBar in self.valueProgressBars)
     {
-        [progressBar setProgress:sender.value*100];
+        [valueProgressBar setProgress:[valueProgressBar minProgressValue] +
+                        ([valueProgressBar maxProgressValue]-[valueProgressBar minProgressValue]) * sender.value];
+    }
+    for (ADVPercentProgressBar * percentProgressBar in self.percentProgressBars)
+    {
+        [percentProgressBar setProgress:sender.value];
     }
 }
 

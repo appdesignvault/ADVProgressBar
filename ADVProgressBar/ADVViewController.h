@@ -33,7 +33,8 @@
 @interface ADVViewController : UIViewController <UIWebViewDelegate>
 
 
-@property (nonatomic, strong) NSArray* progressBars;
+@property (nonatomic, strong) NSArray* percentProgressBars;
+@property (nonatomic, strong) NSArray* valueProgressBars;
 
 -(IBAction)sliderValueChanged:(UISlider*)sender;
 
