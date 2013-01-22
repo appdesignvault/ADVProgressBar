@@ -40,7 +40,6 @@
     UIImageView *bgImageView;
     UIImageView *progressImageView;
     UIImage *progressFillImage;
-    CGFloat progressRange;
 }
 
 
@@ -76,7 +75,7 @@
         UILabel* percentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 32, 17)];
         
         [percentLabel setTag:1];
-        [percentLabel setText:@"0%"];
+        [percentLabel setText:@"0"];
         [percentLabel setBackgroundColor:[UIColor clearColor]];
         [percentLabel setFont:[UIFont boldSystemFontOfSize:13]];
         [percentLabel setTextAlignment:UITextAlignmentCenter];
@@ -90,9 +89,7 @@
         self.progress = 0.0f;
         self.showPercentage = true;
         self.minProgressValue = 0.0f;
-        self.maxProgressValue = 100.0f;
-        progressRange = self.maxProgressValue - self.minProgressValue;
-
+        self.maxProgressValue = 1.0f;
     }
     
     return self;
@@ -108,7 +105,16 @@
             
             progress = theProgress;
             
-            CGFloat percentProgress = (progress - self.minProgressValue) / progressRange;
+            bool showPercentage;
+            if (self.maxProgressValue <= 1.0 || self.maxProgressValue >= 1000.0) {
+                showPercentage = true;
+            }
+            else {
+                showPercentage = self.showPercentage;
+            }
+            
+            CGFloat percentProgress = (progress - self.minProgressValue) /
+                                (self.maxProgressValue - self.minProgressValue);
             
             progressImageView.image = progressFillImage;
             
@@ -131,12 +137,18 @@
             percentView.frame = percentFrame;
             
             UILabel* percentLabel = (UILabel*)[percentView viewWithTag:1];
-            if (self.showPercentage) {
-                [percentLabel setText:[NSString  stringWithFormat:@"%d%%", (int)(percentProgress*100)]];
+            if (showPercentage) {
+                if (percentProgress > 0) {
+                    [percentLabel setText:
+                        [NSString  stringWithFormat:@"%d%%", (int)(percentProgress*100)]];
+                }
+                else {
+                    [percentLabel setText:@"0"];
+                }
             }
             else {
                 // show value
-                [percentLabel setText:[NSString  stringWithFormat:@"%d", (int)(percentProgress*100)]];
+                [percentLabel setText:[NSString  stringWithFormat:@"%d", (int)progress]];
             }
             
         }
