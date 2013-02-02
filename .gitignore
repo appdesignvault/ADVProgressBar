@@ -7,3 +7,7 @@
 # XCODE generated files #
 #########################
 xcuserdata/
+
+# DOXYGEN generated files #
+#########################
+html/
