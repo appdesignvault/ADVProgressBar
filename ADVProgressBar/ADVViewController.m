@@ -82,7 +82,7 @@
     [self.view addSubview:brownProgressPar];
     
     
-    self.valueProgressBars = [NSArray arrayWithObjects:blueprogressBar, redProgressBar, nil];
+    self.integralProgressBars = [NSArray arrayWithObjects:blueprogressBar, redProgressBar, nil];
     
     self.percentProgressBars = [NSArray arrayWithObjects:greenprogressBar, brownProgressPar, nil];
     
@@ -132,7 +132,7 @@
 
 -(IBAction)sliderValueChanged:(UISlider*)sender
 {
-    for (ADVPercentProgressBar * valueProgressBar in self.valueProgressBars)
+    for (ADVPercentProgressBar * valueProgressBar in self.integralProgressBars)
     {
         [valueProgressBar setProgress:[valueProgressBar minProgressValue] +
                         ([valueProgressBar maxProgressValue]-[valueProgressBar minProgressValue]) * sender.value];

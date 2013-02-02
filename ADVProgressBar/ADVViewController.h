@@ -34,7 +34,7 @@
 
 
 @property (nonatomic, strong) NSArray* percentProgressBars;
-@property (nonatomic, strong) NSArray* valueProgressBars;
+@property (nonatomic, strong) NSArray* integralProgressBars;
 
 -(IBAction)sliderValueChanged:(UISlider*)sender;
 
