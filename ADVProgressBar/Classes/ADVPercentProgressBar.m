@@ -87,7 +87,7 @@
         [self addSubview:percentView];
         
         self.progress = 0.0f;
-        self.showPercentage = true;
+        self.showPercent = true;
         self.minProgressValue = 0.0f;
         self.maxProgressValue = 1.0f;
     }
@@ -96,62 +96,67 @@
 }
 
 
-- (void)setProgress:(CGFloat)theProgress {
+- (void)setProgress:(CGFloat)theProgress
+{
+    if (self.progress == theProgress) {
+        return;
+    }
     
-    if (self.progress != theProgress) {
-        
-        // check range
-        if (theProgress >= self.minProgressValue && theProgress <= self.maxProgressValue) {
-            
-            progress = theProgress;
-            
-            bool showPercentage;
-            if (self.maxProgressValue <= 1.0 || self.maxProgressValue >= 1000.0) {
-                showPercentage = true;
-            }
-            else {
-                showPercentage = self.showPercentage;
-            }
-            
-            CGFloat percentProgress = (progress - self.minProgressValue) /
-                                (self.maxProgressValue - self.minProgressValue);
-            
-            progressImageView.image = progressFillImage;
-            
-            CGRect frame = progressImageView.frame;
-            
-            frame.origin.x = 2;
-            frame.origin.y = 2;
-            frame.size.height = bgImageView.frame.size.height - 4;
-            
-            frame.size.width = (bgImageView.frame.size.width - 4) * percentProgress;
-            
-            progressImageView.frame = frame;
-            
-            CGRect percentFrame = percentView.frame;
-            
-            float percentViewWidth = percentView.frame.size.width;
-            float leftEdge = (progressImageView.frame.size.width - percentViewWidth) - RIGHT_PADDING;
-            
-            percentFrame.origin.x = (leftEdge < LEFT_PADDING) ? LEFT_PADDING : leftEdge;
-            percentView.frame = percentFrame;
-            
-            UILabel* percentLabel = (UILabel*)[percentView viewWithTag:1];
-            if (showPercentage) {
-                if (percentProgress > 0) {
-                    [percentLabel setText:
-                        [NSString  stringWithFormat:@"%d%%", (int)(percentProgress*100)]];
-                }
-                else {
-                    [percentLabel setText:@"0"];
-                }
-            }
-            else {
-                // show value
-                [percentLabel setText:[NSString  stringWithFormat:@"%d", (int)progress]];
-            }
-            
+    // check range and pin to its limits if required
+    if (theProgress < self.minProgressValue) {
+        theProgress = self.minProgressValue;
+    }
+    if (theProgress > self.maxProgressValue) {
+        theProgress = self.maxProgressValue;
+    }
+    
+    progress = theProgress;
+    
+    bool showPercent;
+    if (self.maxProgressValue <= 1.0 || self.maxProgressValue >= 1000.0) {
+        showPercent = true;
+    }
+    else {
+        showPercent = self.showPercent;
+    }
+    
+    CGFloat percentProgress = (progress - self.minProgressValue) /
+                        (self.maxProgressValue - self.minProgressValue);
+    
+    progressImageView.image = progressFillImage;
+    
+    CGRect frame = progressImageView.frame;
+    
+    frame.origin.x = 2;
+    frame.origin.y = 2;
+    frame.size.height = bgImageView.frame.size.height - 4;
+    
+    frame.size.width = (bgImageView.frame.size.width - 4) * percentProgress;
+    
+    progressImageView.frame = frame;
+    
+    CGRect percentFrame = percentView.frame;
+    
+    float percentViewWidth = percentView.frame.size.width;
+    float leftEdge = (progressImageView.frame.size.width - percentViewWidth) - RIGHT_PADDING;
+    
+    percentFrame.origin.x = (leftEdge < LEFT_PADDING) ? LEFT_PADDING : leftEdge;
+    percentView.frame = percentFrame;
+    
+    UILabel* percentLabel = (UILabel*)[percentView viewWithTag:1];
+    if (showPercent) {
+        // show percent
+        if (percentProgress > 0) {
+            [percentLabel setText:
+                [NSString  stringWithFormat:@"%d%%", (int)(percentProgress*100)]];
         }
+        else {
+            [percentLabel setText:@"0"];
+        }
+    }
+    else {
+        // show integral
+        [percentLabel setText:[NSString  stringWithFormat:@"%d", (int)progress]];
     }
 }
 
