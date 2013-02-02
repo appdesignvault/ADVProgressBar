@@ -6,8 +6,11 @@
 /*
  The MIT License
  
- Copyright (c) 2011 Tope Abayomi 
+ Original work Copyright (c) 2011 Tope Abayomi
  http://www.appdesignvault.com/
+ 
+ Modified work Copyright (c) 2013 Corrado Ubezio
+ https://github.com/corerd/
  
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
