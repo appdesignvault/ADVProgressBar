@@ -90,7 +90,7 @@
         [self addSubview:percentView];
         
         self.progress = 0.0f;
-        self.showPercent = true;
+        self.showPercent = YES;
         self.minProgressValue = 0.0f;
         self.maxProgressValue = 1.0f;
     }
@@ -115,9 +115,9 @@
     
     progress = theProgress;
     
-    bool showPercent;
+    BOOL showPercent;
     if (self.maxProgressValue <= 1.0 || self.maxProgressValue >= 1000.0) {
-        showPercent = true;
+        showPercent = YES;
     }
     else {
         showPercent = self.showPercent;
@@ -147,7 +147,7 @@
     percentView.frame = percentFrame;
     
     UILabel* percentLabel = (UILabel*)[percentView viewWithTag:1];
-    if (showPercent) {
+    if (showPercent == YES) {
         // show percent
         if (percentProgress > 0) {
             [percentLabel setText:

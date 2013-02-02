@@ -67,19 +67,19 @@
 
 #import <Foundation/Foundation.h>
 
+
+@interface ADVPercentProgressBar : UIView
+
 // Types
 
 /// Set of `progressImageView` horizontal bar colors.
 typedef enum
-{       
+{
     ADVProgressBarGreen,
     ADVProgressBarRed,
     ADVProgressBarBrown,
     ADVProgressBarBlue
 } ADVProgressBarColor;
-
-
-@interface ADVPercentProgressBar : UIView
 
 // Properties
 
@@ -92,8 +92,8 @@ typedef enum
 /// Maximum in the range of `progress` values (default 1.0).
 @property (nonatomic, readwrite, assign) CGFloat maxProgressValue;
 
-/// Toggle between percent or integral view of current `progress` (default `true`=percent)
-@property (nonatomic, readwrite, assign) bool showPercent;
+/// Toggle between percent or integral view of current **progress** (default `YES` = percent)
+@property (nonatomic, readwrite, assign) BOOL showPercent;
 
 // Methods
 
