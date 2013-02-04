@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		92ED54B116AC27F0006A1C73 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 92ED54AF16AC27F0006A1C73 /* LICENSE.txt */; };
 		92ED54B216AC27F0006A1C73 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 92ED54B016AC27F0006A1C73 /* README.md */; };
+		92EEEEDB16BF57DA007610B9 /* Doxyfile in Resources */ = {isa = PBXBuildFile; fileRef = 92EEEE7C16BF57DA007610B9 /* Doxyfile */; };
 		ECE9A478150A435E0076F0C5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECE9A477150A435E0076F0C5 /* UIKit.framework */; };
 		ECE9A47A150A435E0076F0C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECE9A479150A435E0076F0C5 /* Foundation.framework */; };
 		ECE9A47C150A435E0076F0C5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECE9A47B150A435E0076F0C5 /* CoreGraphics.framework */; };
@@ -35,6 +36,7 @@
 /* Begin PBXFileReference section */
 		92ED54AF16AC27F0006A1C73 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		92ED54B016AC27F0006A1C73 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		92EEEE7C16BF57DA007610B9 /* Doxyfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Doxyfile; sourceTree = "<group>"; };
 		ECE9A473150A435E0076F0C5 /* ADVProgressBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ADVProgressBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECE9A477150A435E0076F0C5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		ECE9A479150A435E0076F0C5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -78,16 +80,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		92EEEE7B16BF57DA007610B9 /* DoxyDoc */ = {
+			isa = PBXGroup;
+			children = (
+				92EEEE7C16BF57DA007610B9 /* Doxyfile */,
+			);
+			path = DoxyDoc;
+			sourceTree = "<group>";
+		};
 		ECE9A468150A435E0076F0C5 = {
 			isa = PBXGroup;
 			children = (
-				92ED54AF16AC27F0006A1C73 /* LICENSE.txt */,
 				92ED54B016AC27F0006A1C73 /* README.md */,
-				ECE9A4B5150A48240076F0C5 /* Classes */,
-				ECE9A498150A446C0076F0C5 /* Resources */,
+				92ED54AF16AC27F0006A1C73 /* LICENSE.txt */,
 				ECE9A47D150A435E0076F0C5 /* ADVProgressBar */,
+				ECE9A4B5150A48240076F0C5 /* Classes */,
+				92EEEE7B16BF57DA007610B9 /* DoxyDoc */,
 				ECE9A476150A435E0076F0C5 /* Frameworks */,
 				ECE9A474150A435E0076F0C5 /* Products */,
+				ECE9A498150A446C0076F0C5 /* Resources */,
 			);
 			sourceTree = "<group>";
 		};
@@ -228,6 +239,7 @@
 				ECE9A4B0150A446C0076F0C5 /* progress-track@2x.png in Resources */,
 				92ED54B116AC27F0006A1C73 /* LICENSE.txt in Resources */,
 				92ED54B216AC27F0006A1C73 /* README.md in Resources */,
+				92EEEEDB16BF57DA007610B9 /* Doxyfile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
