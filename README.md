@@ -1,7 +1,7 @@
 ADVProgressBar for iOS
 ======================
 
-A custom progress bar that comes in multiple colours.
+A custom progress bar that comes in multiple colors.
 It shows a display above the bar that depicts the amount of the task that has completed.
 This indication may be displayed as the whole value or its percentage.
 
@@ -20,6 +20,12 @@ DOCUMENTATION
 The design documentation can be found [here] (http://corerd.github.com/ADVProgressBar).
 
 The Doxygen configuration file Doxyfile is also provided.
+The Doxygen output html pages can be found under the **gh-pages** branch.
+Otherwise, you can self generate them following these steps:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cd /path/to/ADVProgressBar/DoxyDoc
+doxygen Doxyfile
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 CREDITS
