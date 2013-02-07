@@ -43,61 +43,109 @@
     UIImageView *bgImageView;
     UIImageView *progressImageView;
     UIImage *progressFillImage;
+    
+    ADVPercentProgressBar *customView;
+    CGRect customViewFrame;
+    BOOL customViewFromNIB;
+
 }
 
 
 @synthesize progress;
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        customViewFromNIB = NO;
+    }
+    return self;
+}
+
+- (void)draw:(CGRect)frame withProgressBarColor:(ADVProgressBarColor)barColor
+{
+    NSString* progressFillStr = [self getImageNameFromBarDefinition:barColor];
+    
+    progressFillImage = [UIImage imageNamed:progressFillStr];
+    
+    bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+    
+    [bgImageView setImage:[UIImage imageNamed:@"progress-track.png"]];
+    
+    [self addSubview:bgImageView];
+    
+    progressImageView = [[UIImageView alloc] initWithFrame:CGRectMake(1, 0, 0, frame.size.height)];
+    
+    [self addSubview:progressImageView];
+    
+    //percentView = [[UIView alloc] initWithFrame:CGRectMake(LEFT_PADDING, 6, 32, 17)];
+    percentView = [[UIView alloc] initWithFrame:CGRectMake(LEFT_PADDING, 0, 32, 17)];
+    
+    UIImageView* percentImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 32, 17)];
+    
+    [percentImageView setImage:[UIImage imageNamed:@"progress-count.png"]];
+    
+    UILabel* percentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 32, 17)];
+    
+    [percentLabel setTag:1];
+    [percentLabel setText:@"0"];
+    [percentLabel setBackgroundColor:[UIColor clearColor]];
+    [percentLabel setFont:[UIFont boldSystemFontOfSize:13]];
+    [percentLabel setTextAlignment:UITextAlignmentCenter];
+    [percentLabel setAdjustsFontSizeToFitWidth:YES];
+    
+    [percentView addSubview:percentImageView];
+    [percentView addSubview:percentLabel];
+    
+    [self addSubview:percentView];
+    
+    self.progress = 0.0f;
+    self.showPercent = YES;
+    self.minProgressValue = 0.0f;
+    self.maxProgressValue = 1.0f;
+}
 
 - (id)initWithFrame:(CGRect)frame andProgressBarColor:(ADVProgressBarColor)barColor
 {
     
-    if (self = [super initWithFrame:frame]) 
+    if (self = [super initWithFrame:frame])
     {
-        
-        NSString* progressFillStr = [self getImageNameFromBarDefinition:barColor];
-        
-        progressFillImage = [UIImage imageNamed:progressFillStr];
-        
-        bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
-        
-        [bgImageView setImage:[UIImage imageNamed:@"progress-track.png"]];
-        
-        [self addSubview:bgImageView];
-        
-        progressImageView = [[UIImageView alloc] initWithFrame:CGRectMake(1, 0, 0, frame.size.height)];
-        
-        [self addSubview:progressImageView];
-        
-        percentView = [[UIView alloc] initWithFrame:CGRectMake(LEFT_PADDING, 6, 32, 17)];
-        
-        UIImageView* percentImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 32, 17)];
-        
-        [percentImageView setImage:[UIImage imageNamed:@"progress-count.png"]];
-        
-        UILabel* percentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 32, 17)];
-        
-        [percentLabel setTag:1];
-        [percentLabel setText:@"0"];
-        [percentLabel setBackgroundColor:[UIColor clearColor]];
-        [percentLabel setFont:[UIFont boldSystemFontOfSize:13]];
-        [percentLabel setTextAlignment:UITextAlignmentCenter];
-        [percentLabel setAdjustsFontSizeToFitWidth:YES];
-        
-        [percentView addSubview:percentImageView];
-        [percentView addSubview:percentLabel];
-        
-        [self addSubview:percentView];
-        
-        self.progress = 0.0f;
-        self.showPercent = YES;
-        self.minProgressValue = 0.0f;
-        self.maxProgressValue = 1.0f;
+        [self draw:frame withProgressBarColor:barColor];
     }
     
     return self;
 }
 
+
+// Override initWithCoder: if you're loading it from a nib or storyboard.
+- (id)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        customViewFromNIB = YES;
+        customViewFrame = self.frame;
+        [self draw:self.frame withProgressBarColor:ADVProgressBarBlue];
+    }
+    
+    return self;
+}
+
+
+// Override layoutSubviews
+// This function gets called whenever the frame of the view changes.
+/*
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    if (customViewFromNIB != YES) {
+        return;
+    }
+    
+    [self draw:self.frame withProgressBarColor:ADVProgressBarBlue];
+
+}
+*/
 
 - (void)setProgress:(CGFloat)theProgress
 {

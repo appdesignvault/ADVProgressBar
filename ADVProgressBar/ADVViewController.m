@@ -32,7 +32,6 @@
  */
 
 #import "ADVViewController.h"
-#import "ADVPercentProgressBar.h"
 
 
 @implementation ADVViewController
@@ -121,6 +120,9 @@
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    self.blueProgressBar.progress = 0.5;
+
 }
 
 -(BOOL) webView:(UIWebView *)inWeb shouldStartLoadWithRequest:(NSURLRequest *)inRequest navigationType:(UIWebViewNavigationType)inType {
@@ -144,6 +146,8 @@
     {
         [percentProgressBar setProgress:sender.value];
     }
+
+    [self.blueProgressBar setProgress:sender.value];
 }
 
 - (void)viewDidUnload

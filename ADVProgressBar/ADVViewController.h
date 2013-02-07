@@ -32,9 +32,12 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "ADVPercentProgressBar.h"
 
 @interface ADVViewController : UIViewController <UIWebViewDelegate>
 
+/// Custom UIView
+@property (weak, nonatomic) IBOutlet ADVPercentProgressBar *blueProgressBar;
 
 @property (nonatomic, strong) NSArray* percentProgressBars;
 @property (nonatomic, strong) NSArray* integralProgressBars;
