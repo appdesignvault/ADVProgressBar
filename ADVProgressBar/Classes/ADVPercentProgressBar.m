@@ -78,6 +78,10 @@
     
     [self addSubview:progressImageView];
     
+    // test dimension
+    CGPoint cframe = self.center;
+    CGFloat originY = cframe.y - (self.frame.size.height / 2);
+    
     //percentView = [[UIView alloc] initWithFrame:CGRectMake(LEFT_PADDING, 6, 32, 17)];
     percentView = [[UIView alloc] initWithFrame:CGRectMake(LEFT_PADDING, 0, 32, 17)];
     
@@ -105,6 +109,8 @@
     self.maxProgressValue = 1.0f;
 }
 
+
+// Override initWithFrame: if you add the view programatically.
 - (id)initWithFrame:(CGRect)frame andProgressBarColor:(ADVProgressBarColor)barColor
 {
     
@@ -123,7 +129,7 @@
     self = [super initWithCoder:coder];
     if (self) {
         customViewFromNIB = YES;
-        customViewFrame = self.frame;
+        //customViewFrame = self.frame;
         [self draw:self.frame withProgressBarColor:ADVProgressBarBlue];
     }
     

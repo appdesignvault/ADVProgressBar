@@ -34,6 +34,9 @@ CREDITS
 [ADVProgressBar on Cocoa Controls]
 (http://www.cocoacontrols.com/controls/advprogressbar)
 
+[How To Make a Custom UIView]
+(http://www.raywenderlich.com/1768/how-to-make-a-custom-uiview-a-5-star-rating-view)
+
 
 The MIT License
 ---------------
