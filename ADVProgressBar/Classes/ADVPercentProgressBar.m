@@ -47,7 +47,6 @@
     ADVPercentProgressBar *customView;
     CGRect customViewFrame;
     BOOL customViewFromNIB;
-    int cnt;
 
 }
 
@@ -59,15 +58,12 @@
     self = [super init];
     if (self) {
         customViewFromNIB = NO;
-        cnt = 0;
     }
     return self;
 }
 
 - (void)draw:(CGRect)frame withProgressBarColor:(ADVProgressBarColor)barColor
 {
-    cnt++;
-    
     NSString* progressFillStr = [self getImageNameFromBarDefinition:barColor];
     
     progressFillImage = [UIImage imageNamed:progressFillStr];
@@ -82,15 +78,12 @@
     
     [self addSubview:progressImageView];
     
+    // test dimension
+    CGPoint cframe = self.center;
+    CGFloat originY = cframe.y - (self.frame.size.height / 2);
+    
     //percentView = [[UIView alloc] initWithFrame:CGRectMake(LEFT_PADDING, 6, 32, 17)];
-    
-    // vari tentativi per allocare percentView
-    CGFloat percentViewH = progressImageView.frame.size.height;
-    percentView = [[UIView alloc] initWithFrame:CGRectMake(LEFT_PADDING, 0, 32, percentViewH)];
-    
-    // vari tentativi
-    //percentFrame.size.height = progressImageView.frame.size.height - 6;
-    //percentFrame.origin.y = progressImageView.center.y - percentFrame.size.height / 2;
+    percentView = [[UIView alloc] initWithFrame:CGRectMake(LEFT_PADDING, 0, 32, 17)];
     
     UIImageView* percentImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 32, 17)];
     
