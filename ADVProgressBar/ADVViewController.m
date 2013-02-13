@@ -48,7 +48,7 @@
 - (void)viewDidLoad
 {
     
-    ADVPercentProgressBar *blueprogressBar = [[ADVPercentProgressBar alloc] initWithFrame:CGRectMake(10, 30, 292, 28) andProgressBarColor:ADVProgressBarBlue];
+    ADVPercentProgressBar *blueprogressBar = [[ADVPercentProgressBar alloc] initWithFrame:CGRectMake(10, 30, 292, 100) andProgressBarColor:ADVProgressBarBlue];
     
     [blueprogressBar setShowPercent:NO];
     [blueprogressBar setMinProgressValue:0];

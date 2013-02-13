@@ -31,6 +31,10 @@
  THE SOFTWARE.
  */
 
+#define PERCENT_VIEW_WIDTH      32
+#define PERCENT_VIEW_MIN_HEIGHT 17
+#define TOP_PADDING             7.0f
+#define BOTTOM_PADDING          7.0f
 #define LEFT_PADDING 5.0f
 #define RIGHT_PADDING 3.0f
 
@@ -44,14 +48,38 @@
     UIImageView *progressImageView;
     UIImage *progressFillImage;
     
-    ADVPercentProgressBar *customView;
-    CGRect customViewFrame;
     BOOL customViewFromNIB;
 
 }
 
-
 @synthesize progress;
+
+// Thanks to Cyrille
+// http://stackoverflow.com/questions/6856879/iphone-getting-the-size-of-an-image-after-aspectft
+- (CGSize)getScale:(CGSize)originalSize fitInSize:(CGSize)boxSize withMode:(UIViewContentMode)mode
+{
+    CGFloat sx = boxSize.width/originalSize.width;
+    CGFloat sy = boxSize.height/originalSize.height;
+    CGFloat s = 1.0;
+    
+    switch (self.contentMode) {
+        case UIViewContentModeScaleAspectFit:
+            s = fminf(sx, sy);
+            return CGSizeMake(s, s);
+            break;
+            
+        case UIViewContentModeScaleAspectFill:
+            s = fmaxf(sx, sy);
+            return CGSizeMake(s, s);
+            break;
+            
+        case UIViewContentModeScaleToFill:
+            return CGSizeMake(sx, sy);
+            
+        default:
+            return CGSizeMake(s, s);
+    }
+}
 
 - (id)init
 {
@@ -62,34 +90,96 @@
     return self;
 }
 
-- (void)draw:(CGRect)frame withProgressBarColor:(ADVProgressBarColor)barColor
+- (void)ADVProgressBarDraw:(CGRect)frame withProgressBarColor:(ADVProgressBarColor)barColor
 {
+/*
+    if (frame.size.height - TOP_PADDING - BOTTOM_PADDING < PERCENT_VIEW_MIN_HEIGHT) {
+        NSLog(@"progressBarFrameInit: Frame heigh is too small to draw PercentView");
+        return;
+    }
+    if ( (frame.size.width - LEFT_PADDING - RIGHT_PADDING) < PERCENT_VIEW_WIDTH ) {
+        NSLog(@"progressBarFrameInit: Frame width is too small to draw PercentView");
+        return;
+    }
+*/
     NSString* progressFillStr = [self getImageNameFromBarDefinition:barColor];
-    
     progressFillImage = [UIImage imageNamed:progressFillStr];
     
-    bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+    bgImageView = [[UIImageView alloc] initWithFrame:
+                   CGRectMake(
+                              0,
+                              0,
+                              frame.size.width,
+                              frame.size.height )
+                   ];
     
     [bgImageView setImage:[UIImage imageNamed:@"progress-track.png"]];
     
     [self addSubview:bgImageView];
     
-    progressImageView = [[UIImageView alloc] initWithFrame:CGRectMake(1, 0, 0, frame.size.height)];
+    progressImageView = [[UIImageView alloc] initWithFrame:
+                         CGRectMake(
+                                    1,
+                                    0,
+                                    0,
+                                    frame.size.height )
+                         ];
     
     [self addSubview:progressImageView];
-    
-    // test dimension
-    CGPoint cframe = self.center;
-    CGFloat originY = cframe.y - (self.frame.size.height / 2);
-    
+
+    CGFloat percentViewY;
+    CGFloat percentViewHeight;
+    CGSize bgImageScale;
+
+    if (customViewFromNIB == YES) {
+        bgImageScale = [self getScale:bgImageView.image.size
+                            fitInSize:bgImageView.frame.size
+                            withMode:self.contentMode
+                        ];
+    }
+    else {
+        bgImageScale = [self getScale:bgImageView.frame.size
+                            fitInSize:bgImageView.image.size
+                            withMode:self.contentMode
+                        ];
+    }
+    CGFloat bgImageHeight = bgImageView.frame.size.height * bgImageScale.height;
+    CGFloat centerY = bgImageView.center.y;
+    percentViewY = (centerY - (bgImageHeight - bgImageView.frame.size.height + 1) / 2);
+    if (percentViewY < 0) {
+        percentViewY *= -1;
+    }
+    percentViewHeight = (centerY - percentViewY + 1)*2;
+
     //percentView = [[UIView alloc] initWithFrame:CGRectMake(LEFT_PADDING, 6, 32, 17)];
-    percentView = [[UIView alloc] initWithFrame:CGRectMake(LEFT_PADDING, 0, 32, 17)];
+    percentView = [[UIView alloc] initWithFrame:
+                   CGRectMake(
+                              LEFT_PADDING,
+                              //TOP_PADDING,
+                              percentViewY,
+                              PERCENT_VIEW_WIDTH,
+                              percentViewHeight )
+                   ];
     
-    UIImageView* percentImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 32, 17)];
+    //UIImageView* percentImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 32, 17)];
+    UIImageView* percentImageView = [[UIImageView alloc] initWithFrame:
+                                     CGRectMake(
+                                                0,
+                                                0,
+                                                PERCENT_VIEW_WIDTH,
+                                                percentViewHeight )
+                                     ];
     
     [percentImageView setImage:[UIImage imageNamed:@"progress-count.png"]];
     
-    UILabel* percentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 32, 17)];
+    //UILabel* percentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 32, 17)];
+    UILabel* percentLabel = [[UILabel alloc] initWithFrame:
+                             CGRectMake(
+                                        0,
+                                        0,
+                                        PERCENT_VIEW_WIDTH,
+                                        percentViewHeight )
+                             ];
     
     [percentLabel setTag:1];
     [percentLabel setText:@"0"];
@@ -110,13 +200,18 @@
 }
 
 
+/*
+ We support both initWithFrame and initWithCoder so that our view controller
+ can add us via a nib or programatically.
+ */
+
 // Override initWithFrame: if you add the view programatically.
 - (id)initWithFrame:(CGRect)frame andProgressBarColor:(ADVProgressBarColor)barColor
 {
     
     if (self = [super initWithFrame:frame])
     {
-        [self draw:frame withProgressBarColor:barColor];
+        [self ADVProgressBarDraw:frame withProgressBarColor:barColor];
     }
     
     return self;
@@ -129,8 +224,7 @@
     self = [super initWithCoder:coder];
     if (self) {
         customViewFromNIB = YES;
-        //customViewFrame = self.frame;
-        [self draw:self.frame withProgressBarColor:ADVProgressBarBlue];
+        [self ADVProgressBarDraw:self.frame withProgressBarColor:ADVProgressBarBlue];
     }
     
     return self;
