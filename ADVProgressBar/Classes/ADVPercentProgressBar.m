@@ -127,10 +127,7 @@
     
     [self addSubview:progressImageView];
 
-    CGFloat percentViewY;
-    CGFloat percentViewHeight;
     CGSize bgImageScale;
-
     if (customViewFromNIB == YES) {
         bgImageScale = [self getScale:bgImageView.image.size
                             fitInSize:bgImageView.frame.size
@@ -143,13 +140,20 @@
                             withMode:self.contentMode
                         ];
     }
-    CGFloat bgImageHeight = bgImageView.frame.size.height * bgImageScale.height;
-    CGFloat centerY = bgImageView.center.y;
-    percentViewY = (centerY - (bgImageHeight - bgImageView.frame.size.height + 1) / 2);
-    if (percentViewY < 0) {
-        percentViewY *= -1;
+    
+    CGFloat topPadding = TOP_PADDING;
+    if (bgImageScale.height > 1) {
+        topPadding *= bgImageScale.height;
     }
-    percentViewHeight = (centerY - percentViewY + 1)*2;
+
+    CGFloat bgImageHeight = bgImageView.frame.size.height;
+    if (bgImageScale.height < 1) {
+        bgImageHeight -= (bgImageView.frame.size.height - topPadding) * bgImageScale.height;
+    }
+
+    CGFloat centerY = bgImageView.center.y;
+    CGFloat percentViewY = topPadding + centerY - bgImageHeight / 2;
+    CGFloat percentViewHeight = (centerY - percentViewY)*2;
 
     //percentView = [[UIView alloc] initWithFrame:CGRectMake(LEFT_PADDING, 6, 32, 17)];
     percentView = [[UIView alloc] initWithFrame:

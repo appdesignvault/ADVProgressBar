@@ -13,14 +13,20 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="fI1-Ey-NbA" customClass="ADVPercentProgressBar">
-                                <rect key="frame" x="20" y="357" width="280" height="41"/>
+                                <rect key="frame" x="20" y="379" width="280" height="41"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="khH-35-HQs" customClass="ADVPercentProgressBar">
+                                <rect key="frame" x="20" y="296" width="280" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="bigProgressBar" destination="khH-35-HQs" id="9pj-wu-EDW"/>
                         <outlet property="blueProgressBar" destination="fI1-Ey-NbA" id="te7-VC-bPh"/>
                     </connections>
                 </viewController>
@@ -36,6 +42,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ADVViewController.h"/>
             <relationships>
                 <relationship kind="action" name="sliderValueChanged:" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="bigProgressBar" candidateClass="ADVPercentProgressBar"/>
                 <relationship kind="outlet" name="blueProgressBar" candidateClass="ADVPercentProgressBar"/>
             </relationships>
         </class>

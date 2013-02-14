@@ -37,6 +37,7 @@
 @interface ADVViewController : UIViewController <UIWebViewDelegate>
 
 /// Custom UIView
+@property (weak, nonatomic) IBOutlet ADVPercentProgressBar *bigProgressBar;
 @property (weak, nonatomic) IBOutlet ADVPercentProgressBar *blueProgressBar;
 
 @property (nonatomic, strong) NSArray* percentProgressBars;

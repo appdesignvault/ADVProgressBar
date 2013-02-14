@@ -121,6 +121,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    self.bigProgressBar.progress = 0.5;
     self.blueProgressBar.progress = 0.5;
 
 }
@@ -147,6 +148,7 @@
         [percentProgressBar setProgress:sender.value];
     }
 
+    [self.bigProgressBar setProgress:sender.value];
     [self.blueProgressBar setProgress:sender.value];
 }
 
