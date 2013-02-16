@@ -86,13 +86,18 @@ typedef enum
 /// The current amount of the task that has completed (default 0.0).
 @property (nonatomic, readwrite, assign) CGFloat progress;
 
+/// The **progressImageView** horizontal bar color in the **ADVProgressBarColor** set
+/// (default ADVProgressBarBlue).
+@property (nonatomic, readwrite, assign) ADVProgressBarColor progressBarColor;
+
 /// Minimum in the range of **progress** values (default 0.0).
 @property (nonatomic, readwrite, assign) CGFloat minProgressValue;
 
 /// Maximum in the range of **progress** values (default 1.0).
 @property (nonatomic, readwrite, assign) CGFloat maxProgressValue;
 
-/// Toggle between percent or integral view of current **progress** (default `YES` = percent)
+/// Toggle between percent or integral view of current **progress**
+/// (default `YES` = percent)
 @property (nonatomic, readwrite, assign) BOOL showPercent;
 
 // Methods

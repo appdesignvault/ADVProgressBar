@@ -31,15 +31,15 @@
  THE SOFTWARE.
  */
 
-#define PERCENT_VIEW_WIDTH      32
-#define PERCENT_VIEW_MIN_HEIGHT 17
-#define TOP_PADDING             7.0f
-#define BOTTOM_PADDING          7.0f
-#define LEFT_PADDING 5.0f
-#define RIGHT_PADDING 3.0f
 
 #import "ADVPercentProgressBar.h"
 
+
+#define PERCENT_VIEW_WIDTH      32.0f
+#define PERCENT_VIEW_MIN_HEIGHT 14.0f
+#define TOP_PADDING              7.0f
+#define LEFT_PADDING             5.0f
+#define RIGHT_PADDING            3.0f
 
 @implementation ADVPercentProgressBar
 {
@@ -52,58 +52,86 @@
 
 }
 
-@synthesize progress;
 
-// Thanks to Cyrille
-// http://stackoverflow.com/questions/6856879/iphone-getting-the-size-of-an-image-after-aspectft
-- (CGSize)getScale:(CGSize)originalSize fitInSize:(CGSize)boxSize withMode:(UIViewContentMode)mode
+@synthesize progress;
+@synthesize progressBarColor;
+
+
+/*
+ We support both initWithFrame and initWithCoder so that our view controller
+ can add us via a nib or programatically.
+ */
+
+// Override initWithFrame: if you add the view programatically.
+- (id)initWithFrame:(CGRect)frame andProgressBarColor:(ADVProgressBarColor)barColor
 {
-    CGFloat sx = boxSize.width/originalSize.width;
-    CGFloat sy = boxSize.height/originalSize.height;
-    CGFloat s = 1.0;
     
-    switch (self.contentMode) {
-        case UIViewContentModeScaleAspectFit:
-            s = fminf(sx, sy);
-            return CGSizeMake(s, s);
-            break;
-            
-        case UIViewContentModeScaleAspectFill:
-            s = fmaxf(sx, sy);
-            return CGSizeMake(s, s);
-            break;
-            
-        case UIViewContentModeScaleToFill:
-            return CGSizeMake(sx, sy);
-            
-        default:
-            return CGSizeMake(s, s);
+    if (self = [super initWithFrame:frame])
+    {
+        customViewFromNIB = NO;
+        [self ADVProgressBarDraw:frame withProgressBarColor:barColor];
     }
+    
+    return self;
 }
 
-- (id)init
+// Override initWithCoder: if you're loading it from a nib or storyboard.
+- (id)initWithCoder:(NSCoder *)coder
 {
-    self = [super init];
+    self = [super initWithCoder:coder];
     if (self) {
-        customViewFromNIB = NO;
+        customViewFromNIB = YES;
+        [self ADVProgressBarDraw:self.frame
+            withProgressBarColor:ADVProgressBarBlue];
     }
+    
     return self;
+}
+
+// Override layoutSubviews: it gets called whenever the frame of the view changes.
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    if (customViewFromNIB != YES) {
+        return;
+    }
+    [self progressImageDraw];
+}
+
+- (void)setProgress:(CGFloat)theProgress
+{
+    if (self.progress == theProgress) {
+        return;
+    }
+    
+    // check range and pin to its limits if required
+    if (theProgress < self.minProgressValue) {
+        theProgress = self.minProgressValue;
+    }
+    if (theProgress > self.maxProgressValue) {
+        theProgress = self.maxProgressValue;
+    }
+    
+    progress = theProgress;
+    
+    [self progressImageDraw];
+}
+
+- (void)setProgressBarColor:(ADVProgressBarColor)theColor
+{
+    NSString* progressFillStr = [self getImageNameFromBarDefinition:theColor];
+    progressFillImage = [UIImage imageNamed:progressFillStr];
 }
 
 - (void)ADVProgressBarDraw:(CGRect)frame withProgressBarColor:(ADVProgressBarColor)barColor
 {
-/*
-    if (frame.size.height - TOP_PADDING - BOTTOM_PADDING < PERCENT_VIEW_MIN_HEIGHT) {
-        NSLog(@"progressBarFrameInit: Frame heigh is too small to draw PercentView");
-        return;
-    }
     if ( (frame.size.width - LEFT_PADDING - RIGHT_PADDING) < PERCENT_VIEW_WIDTH ) {
-        NSLog(@"progressBarFrameInit: Frame width is too small to draw PercentView");
+        NSLog(@"ADVProgressBarDraw: Frame width is too small to draw PercentView");
         return;
     }
-*/
-    NSString* progressFillStr = [self getImageNameFromBarDefinition:barColor];
-    progressFillImage = [UIImage imageNamed:progressFillStr];
+    
+    self.progressBarColor = barColor;
     
     bgImageView = [[UIImageView alloc] initWithFrame:
                    CGRectMake(
@@ -155,17 +183,19 @@
     CGFloat percentViewY = topPadding + centerY - bgImageHeight / 2;
     CGFloat percentViewHeight = (centerY - percentViewY)*2;
 
-    //percentView = [[UIView alloc] initWithFrame:CGRectMake(LEFT_PADDING, 6, 32, 17)];
+    if (percentViewHeight < PERCENT_VIEW_MIN_HEIGHT) {
+        NSLog(@"ADVProgressBarDraw: Frame heigh is too small to draw PercentView");
+        return;
+    }
+    
     percentView = [[UIView alloc] initWithFrame:
                    CGRectMake(
                               LEFT_PADDING,
-                              //TOP_PADDING,
                               percentViewY,
                               PERCENT_VIEW_WIDTH,
                               percentViewHeight )
                    ];
     
-    //UIImageView* percentImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 32, 17)];
     UIImageView* percentImageView = [[UIImageView alloc] initWithFrame:
                                      CGRectMake(
                                                 0,
@@ -176,7 +206,6 @@
     
     [percentImageView setImage:[UIImage imageNamed:@"progress-count.png"]];
     
-    //UILabel* percentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 32, 17)];
     UILabel* percentLabel = [[UILabel alloc] initWithFrame:
                              CGRectMake(
                                         0,
@@ -197,76 +226,14 @@
     
     [self addSubview:percentView];
     
-    self.progress = 0.0f;
     self.showPercent = YES;
     self.minProgressValue = 0.0f;
     self.maxProgressValue = 1.0f;
+    self.progress = 0.0f;
 }
 
-
-/*
- We support both initWithFrame and initWithCoder so that our view controller
- can add us via a nib or programatically.
- */
-
-// Override initWithFrame: if you add the view programatically.
-- (id)initWithFrame:(CGRect)frame andProgressBarColor:(ADVProgressBarColor)barColor
+- (void)progressImageDraw
 {
-    
-    if (self = [super initWithFrame:frame])
-    {
-        [self ADVProgressBarDraw:frame withProgressBarColor:barColor];
-    }
-    
-    return self;
-}
-
-
-// Override initWithCoder: if you're loading it from a nib or storyboard.
-- (id)initWithCoder:(NSCoder *)coder
-{
-    self = [super initWithCoder:coder];
-    if (self) {
-        customViewFromNIB = YES;
-        [self ADVProgressBarDraw:self.frame withProgressBarColor:ADVProgressBarBlue];
-    }
-    
-    return self;
-}
-
-
-// Override layoutSubviews
-// This function gets called whenever the frame of the view changes.
-/*
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-    
-    if (customViewFromNIB != YES) {
-        return;
-    }
-    
-    [self draw:self.frame withProgressBarColor:ADVProgressBarBlue];
-
-}
-*/
-
-- (void)setProgress:(CGFloat)theProgress
-{
-    if (self.progress == theProgress) {
-        return;
-    }
-    
-    // check range and pin to its limits if required
-    if (theProgress < self.minProgressValue) {
-        theProgress = self.minProgressValue;
-    }
-    if (theProgress > self.maxProgressValue) {
-        theProgress = self.maxProgressValue;
-    }
-    
-    progress = theProgress;
-    
     BOOL showPercent;
     if (self.maxProgressValue <= 1.0 || self.maxProgressValue >= 1000.0) {
         showPercent = YES;
@@ -276,7 +243,7 @@
     }
     
     CGFloat percentProgress = (progress - self.minProgressValue) /
-                        (self.maxProgressValue - self.minProgressValue);
+    (self.maxProgressValue - self.minProgressValue);
     
     progressImageView.image = progressFillImage;
     
@@ -303,7 +270,7 @@
         // show percent
         if (percentProgress > 0) {
             [percentLabel setText:
-                [NSString  stringWithFormat:@"%d%%", (int)(percentProgress*100)]];
+             [NSString  stringWithFormat:@"%d%%", (int)(percentProgress*100)]];
         }
         else {
             [percentLabel setText:@"0"];
@@ -340,8 +307,32 @@
     return imageName;
 }
 
-
-
+// Thanks to Cyrille
+// http://stackoverflow.com/questions/6856879/iphone-getting-the-size-of-an-image-after-aspectft
+- (CGSize)getScale:(CGSize)originalSize fitInSize:(CGSize)boxSize withMode:(UIViewContentMode)mode
+{
+    CGFloat sx = boxSize.width/originalSize.width;
+    CGFloat sy = boxSize.height/originalSize.height;
+    CGFloat s = 1.0;
+    
+    switch (self.contentMode) {
+        case UIViewContentModeScaleAspectFit:
+            s = fminf(sx, sy);
+            return CGSizeMake(s, s);
+            break;
+            
+        case UIViewContentModeScaleAspectFill:
+            s = fmaxf(sx, sy);
+            return CGSizeMake(s, s);
+            break;
+            
+        case UIViewContentModeScaleToFill:
+            return CGSizeMake(sx, sy);
+            
+        default:
+            return CGSizeMake(s, s);
+    }
+}
 
 
 @end
