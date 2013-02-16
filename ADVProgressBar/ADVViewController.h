@@ -38,7 +38,7 @@
  custom views.
  They are added to the View Controller in the two ways:
  - programmatically;
- - from a NIB or storyboard.
+ - from a nib or storyboard.
  */
 
 #import <UIKit/UIKit.h>

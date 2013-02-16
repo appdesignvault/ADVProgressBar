@@ -40,9 +40,9 @@
  that represents a range of values.
  
  The current **progress** is shown by the position of a cursor with a textual indication
- of the amount of the task that has completed, as a percentage:
- @image html pbPercent.jpg
+ of the amount of the task that has completed, as its value or percentage:
+ @image html screenshot.jpg
  
- Or integral value:
- @image html pbIntegral.jpg
+ This Custom UIView can be created and instantiated both in-code
+ (programmatically) or via a nib (storyboard).
 */
