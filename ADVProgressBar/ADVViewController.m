@@ -48,108 +48,91 @@
 - (void)viewDidLoad
 {
     
-    ADVPercentProgressBar *blueprogressBar = [[ADVPercentProgressBar alloc] initWithFrame:CGRectMake(10, 30, 292, 100) andProgressBarColor:ADVProgressBarBlue];
+    ADVPercentProgressBar *blueprogressBar =
+    [[ADVPercentProgressBar alloc] initWithFrame:CGRectMake(10, 30, 292, 56)
+                             andProgressBarColor:ADVProgressBarBlue];
     
     [blueprogressBar setShowPercent:NO];
     [blueprogressBar setMinProgressValue:0];
     [blueprogressBar setMaxProgressValue:500];
     [blueprogressBar setProgress:[blueprogressBar minProgressValue] +
-                        ([blueprogressBar maxProgressValue]-[blueprogressBar minProgressValue])/2];
+                        ([blueprogressBar maxProgressValue] -
+                         [blueprogressBar minProgressValue])/2
+     ];
     
     [self.view addSubview:blueprogressBar];
     
     
-    ADVPercentProgressBar *greenprogressBar = [[ADVPercentProgressBar alloc] initWithFrame:CGRectMake(10, 80, 292, 28) andProgressBarColor:ADVProgressBarGreen];
-    
+    ADVPercentProgressBar *greenprogressBar =
+    [[ADVPercentProgressBar alloc] initWithFrame:CGRectMake(10, 90, 292, 28)
+                             andProgressBarColor:ADVProgressBarGreen];    
     [greenprogressBar setProgress:0.5];
     
     [self.view addSubview:greenprogressBar];
     
     
-    ADVPercentProgressBar *redProgressBar = [[ADVPercentProgressBar alloc] initWithFrame:CGRectMake(10, 130, 292, 28) andProgressBarColor:ADVProgressBarRed];
+    ADVPercentProgressBar *redProgressBar =
+    [[ADVPercentProgressBar alloc] initWithFrame:CGRectMake(10, 125, 292, 56)
+                             andProgressBarColor:ADVProgressBarRed];
     
     [redProgressBar setShowPercent:NO];
     [redProgressBar setMinProgressValue:200];
     [redProgressBar setMaxProgressValue:400];
     [redProgressBar setProgress:[redProgressBar minProgressValue] +
-                        ([redProgressBar maxProgressValue]-[redProgressBar minProgressValue])/2];
+                        ([redProgressBar maxProgressValue] -
+                         [redProgressBar minProgressValue])/2
+     ];
     
     [self.view addSubview:redProgressBar];
     
     
-    ADVPercentProgressBar *brownProgressPar = [[ADVPercentProgressBar alloc] initWithFrame:CGRectMake(10, 180, 292, 28) andProgressBarColor:ADVProgressBarBrown];
-    
+    ADVPercentProgressBar *brownProgressPar =
+    [[ADVPercentProgressBar alloc] initWithFrame:CGRectMake(10, 185, 292, 28)
+                             andProgressBarColor:ADVProgressBarBrown];    
     [brownProgressPar setProgress:0.5];
     
     [self.view addSubview:brownProgressPar];
     
     
-    self.integralProgressBars = [NSArray arrayWithObjects:blueprogressBar, redProgressBar, nil];
-    
-    self.percentProgressBars = [NSArray arrayWithObjects:greenprogressBar, brownProgressPar, nil];
-    
-    
-    UISlider* slider = [[UISlider alloc] initWithFrame:CGRectMake(10, 230, 292, 28)];
-    
-    [slider setMaximumValue:1.0];
-    [slider setMinimumValue:0.0];
-    [slider setValue:0.5];
-    [slider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
-    
-    
-    [self.view addSubview:slider];
-    
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 280, 292, 28)];
-    [label setText:@"Move the slider to see the Progress bars in action"];
-    [label setBackgroundColor:[UIColor clearColor]];
-    [label setFont:[UIFont systemFontOfSize:12]];
-    
-    [self.view addSubview:label];
-    
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 420, 320, 40)];
-    
-    [webView setBackgroundColor:[UIColor clearColor]];
-    [webView setOpaque:NO];
-    [webView setDelegate:self];
-    [webView loadHTMLString:@"<a href='http://www.appdesignvault.com'>http://www.appdesignvault.com</a>" baseURL:nil];
-    
-    [self.view addSubview:webView];
-    
-    [self.view setBackgroundColor:[UIColor colorWithHue:0.0 saturation:0.0 brightness:0.93 alpha:1.0]];
+    [self.view setBackgroundColor:[UIColor colorWithHue:0.0
+                                             saturation:0.0
+                                             brightness:0.93
+                                                  alpha:1.0]
+     ];
     
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    self.bigProgressBar.progress = 0.5;
-    self.blueProgressBar.progress = 0.5;
+    [self.pbRangeValue setShowPercent:NO];
+    [self.pbRangeValue setMinProgressValue:300];
+    [self.pbRangeValue setMaxProgressValue:600];
+    [self.pbRangeValue setProgressBarColor:ADVProgressBarRed];
+    [self.pbRangeValue setProgress:[self.pbRangeValue minProgressValue] +
+     ([self.pbRangeValue maxProgressValue]-[self.pbRangeValue minProgressValue])/2];
 
-}
+    self.pbRangePercent.progress = 0.5;
 
--(BOOL) webView:(UIWebView *)inWeb shouldStartLoadWithRequest:(NSURLRequest *)inRequest navigationType:(UIWebViewNavigationType)inType {
-    if ( inType == UIWebViewNavigationTypeLinkClicked ) {
-        [[UIApplication sharedApplication] openURL:[inRequest URL]];
-        return NO;
-    }
+    self.integralProgressBars = [NSArray arrayWithObjects:blueprogressBar,
+                                 redProgressBar, self.pbRangeValue, nil];
     
-    return YES;
+    self.percentProgressBars = [NSArray arrayWithObjects:greenprogressBar,
+                                brownProgressPar, self.pbRangePercent, nil];
 }
-
 
 -(IBAction)sliderValueChanged:(UISlider*)sender
 {
     for (ADVPercentProgressBar * valueProgressBar in self.integralProgressBars)
     {
         [valueProgressBar setProgress:[valueProgressBar minProgressValue] +
-                        ([valueProgressBar maxProgressValue]-[valueProgressBar minProgressValue]) * sender.value];
+                        ([valueProgressBar maxProgressValue] -
+                         [valueProgressBar minProgressValue]) * sender.value
+         ];
     }
     for (ADVPercentProgressBar * percentProgressBar in self.percentProgressBars)
     {
         [percentProgressBar setProgress:sender.value];
     }
-
-    [self.bigProgressBar setProgress:sender.value];
-    [self.blueProgressBar setProgress:sender.value];
 }
 
 - (void)viewDidUnload
