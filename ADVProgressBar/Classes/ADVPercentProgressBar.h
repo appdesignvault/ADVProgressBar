@@ -63,6 +63,19 @@
  The **showPercent** property isn't taken in account also when the
  **maxProgressValue** is less or equal to 1.0: the current **progress** will be
  always formatted as a percent.
+ 
+ This Custom UIView can be created and instantiated both in-code
+ (programmatically) or via a nib (storyboard).
+ For this reason, are supported both `initWithFrame:andProgressBarColor:` and
+ `initWithCoder:` methods respectively.
+ 
+ CREDITS
+ 
+ [How is view initialized when loaded via a storyboard]
+ (http://stackoverflow.com/questions/8373176/how-is-view-initialized-when-loaded-via-a-storyboard)
+ 
+ [iPhone : Getting the size of an image after AspectFt]
+ (http://stackoverflow.com/questions/6856879/iphone-getting-the-size-of-an-image-after-aspectft)
  */
 
 #import <Foundation/Foundation.h>
@@ -103,8 +116,9 @@ typedef enum
 // Methods
 
 /*!
- Initializes and returns a newly allocated `ADVPercentProgressBar` view object.
+ Override `initWithFrame` if the view is added programmatically.
  
+ Initializes and returns a newly allocated `ADVPercentProgressBar` view object.
  The view is allocated with the specified frame rectangle and
  the **progressImageView** horizontal bar color.
  
@@ -121,5 +135,17 @@ typedef enum
  */
 - (id)initWithFrame:(CGRect)frame
 andProgressBarColor:(ADVProgressBarColor)barColor;
+
+
+/*!
+ Override `initWithCoder` if the view is loaded from a nib or storyboard.
+ 
+ @param coder
+    A nib or storyboard object.
+ 
+ @return
+    An `ADVPercentProgressBar` initialized from a nib or storyboard.
+ */
+- (id)initWithCoder:(NSCoder *)coder;
 
 @end

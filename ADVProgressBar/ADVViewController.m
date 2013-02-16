@@ -35,6 +35,10 @@
 
 
 @implementation ADVViewController
+{
+    NSArray* percentProgressBars;
+    NSArray* integralProgressBars;
+}
 
 
 - (void)didReceiveMemoryWarning
@@ -104,6 +108,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    // ADVPercentProgressBar views loaded from storyboard
+    // MUST be initilized here...
+    
+    
     [self.pbRangeValue setShowPercent:NO];
     [self.pbRangeValue setMinProgressValue:300];
     [self.pbRangeValue setMaxProgressValue:600];
@@ -113,23 +121,23 @@
 
     self.pbRangePercent.progress = 0.5;
 
-    self.integralProgressBars = [NSArray arrayWithObjects:blueprogressBar,
+    integralProgressBars = [NSArray arrayWithObjects:blueprogressBar,
                                  redProgressBar, self.pbRangeValue, nil];
     
-    self.percentProgressBars = [NSArray arrayWithObjects:greenprogressBar,
+    percentProgressBars = [NSArray arrayWithObjects:greenprogressBar,
                                 brownProgressPar, self.pbRangePercent, nil];
 }
 
 -(IBAction)sliderValueChanged:(UISlider*)sender
 {
-    for (ADVPercentProgressBar * valueProgressBar in self.integralProgressBars)
+    for (ADVPercentProgressBar * valueProgressBar in integralProgressBars)
     {
         [valueProgressBar setProgress:[valueProgressBar minProgressValue] +
                         ([valueProgressBar maxProgressValue] -
                          [valueProgressBar minProgressValue]) * sender.value
          ];
     }
-    for (ADVPercentProgressBar * percentProgressBar in self.percentProgressBars)
+    for (ADVPercentProgressBar * percentProgressBar in percentProgressBars)
     {
         [percentProgressBar setProgress:sender.value];
     }

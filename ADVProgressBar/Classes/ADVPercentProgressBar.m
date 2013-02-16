@@ -57,12 +57,7 @@
 @synthesize progressBarColor;
 
 
-/*
- We support both initWithFrame and initWithCoder so that our view controller
- can add us via a nib or programatically.
- */
-
-// Override initWithFrame: if you add the view programatically.
+// Override initWithFrame: if you add the view programmatically.
 - (id)initWithFrame:(CGRect)frame andProgressBarColor:(ADVProgressBarColor)barColor
 {
     

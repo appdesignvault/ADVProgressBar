@@ -31,18 +31,39 @@
  THE SOFTWARE.
  */
 
+/*!
+ ADVPercentProgressBar demo.
+ 
+ Demonstrate how to create and instantiate a bunch of ADVPercentProgressBar
+ custom views.
+ They are added to the View Controller in the two ways:
+ - programmatically;
+ - from a NIB or storyboard.
+ */
+
 #import <UIKit/UIKit.h>
 #import "ADVPercentProgressBar.h"
 
 @interface ADVViewController : UIViewController
 
-/// Custom UIView
+/// An ADVPercentProgressBar showing the integral value.
 @property (weak, nonatomic) IBOutlet ADVPercentProgressBar *pbRangeValue;
+
+/// An ADVPercentProgressBar showing the percentage of the value.
 @property (weak, nonatomic) IBOutlet ADVPercentProgressBar *pbRangePercent;
 
-@property (nonatomic, strong) NSArray* percentProgressBars;
-@property (nonatomic, strong) NSArray* integralProgressBars;
 
+/*!
+ Action on sliding.
+
+ Get the value changed sliding along the track.
+ 
+ The value is returned in the range 0.0 - 1.0 and is used to animate the
+ ADVPercentProgressBar views.
+ 
+ @param sender
+    Slider that is sending the action message.
+ */
 -(IBAction)sliderValueChanged:(UISlider*)sender;
 
 @end
