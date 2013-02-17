@@ -145,6 +145,8 @@
 
 - (void)viewDidUnload
 {
+    [self setPbRangeValue:nil];
+    [self setPbRangePercent:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
