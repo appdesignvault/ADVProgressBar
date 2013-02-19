@@ -6,11 +6,8 @@
 /*
  The MIT License
  
- Original work Copyright (c) 2011 Tope Abayomi
-  http://www.appdesignvault.com/
- 
- Modified work Copyright (c) 2013 Corrado Ubezio
-  https://github.com/corerd/
+ Copyright (c) 2013 Corrado Ubezio
+ https://github.com/corerd/
  
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -34,50 +31,70 @@
 /*!
  @mainpage Design documentation
 
- Define a Custom UIView to depict the progress of a task over time.
+ Define the `ADVPercentProgressBar` class, that is a Custom UIView to depict
+ the progress of a task over time.
  
  The amount of **progress** is displayed by a multiple colors horizontal bar
  that represents a range of values.
  
- The current **progress** is shown by the position of a cursor with a textual
- indication of the amount of the task that has completed, as its value or
- percentage:
+ The current **progress** is shown by the position of a cursor with the textual
+ indication of the amount of the task that has completed. The amount can be
+ displayed as integral value or a percentage of it.
+ 
+ The `ADVPercentProgressBar` class can be created and instantiated both in-code
+ (programmatically) or via a nib (storyboard).
+ 
+
+ Using the `ADVPercentProgressBar` Custom UIView
+ -----------------------------------------------
+ The `ADVPercentProgressBar` class is deployed together a demo app to show
+ various use case scenarios. 
  @image html screenshot.jpg
  
- Using the ADVPercentProgressBar View
- ------------------------------------
+ The custom UIView class and the demo app have been developed as an Xcode 4.5.2
+ project for iPhone devices targeting iOS 5.0.
  
- This Custom UIView can be created and instantiated both in-code
- (programmatically) or via a nib (storyboard).
+ To achieve the same demo app yourself, open Xcode and create a new project
+ with the iOS\Application\Single View Application template and
+ name it ADVProgressBar.
+ Enter ADV as Class Prefix; make sure the Device Family is set to iPhone,
+ Use Storyboard and Use Automatic Reference Counting are checked.
+ 
+ Add `ADVPercentProgressBar.h` and `ADVPercentProgressBar.m` to your project.
  
  Open MainStoryboard.storyboard and go to Editor\Canvas\Show Bounds Rectangles
  (this will make it easier to see what we’re doing).
+ @image html editorMenu.jpg
  
  Then drag a UIView from the Object Library into the view controller,
  and resize it to look like the following:
  @image html storyboard0.jpg
  
  Then click on the UIView you added and go to the Identity Inspector.
- Set the class to ADVPercentProgressBar:
+ Set the class to `ADVPercentProgressBar`:
  @image html storyboard1.jpg
  
  Now connect this to outlets. Bring up the Assistant editor, and make sure that
- ADVViewController.h is visible and import the ADVPercentProgressBar header.
+ ADVViewController.h is visible and import the `ADVPercentProgressBar` header.
  Control-drag from the UIView down between the \@interface and \@end lines,
- and connect it to an Outlet named as you like, say myCustomProgressBar.
+ connect it to an Outlet and named it `pbRangeValue`.
  @image html storyboard2.jpg
  
- Repeat this for any other ADVPercentProgressBar views you have to add.
+ Repeat this for an other `ADVPercentProgressBar` views, but connect it
+ to an outlet called `pbRangePercent`.
  
  At this point ADVViewController.h should look like the following:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\code
 #import <UIKit/UIKit.h>
 #import "ADVPercentProgressBar.h"
 
-\@interface ADVViewController : UIViewController
+@interface ADVViewController : UIViewController
 
-\@property (weak, nonatomic) IBOutlet ADVPercentProgressBar *myCustomProgressBar;
+@property (weak, nonatomic) IBOutlet ADVPercentProgressBar *pbRangeValue;
+@property (weak, nonatomic) IBOutlet ADVPercentProgressBar *pbRangePercent;
 
-\@end
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-(IBAction)sliderValueChanged:(UISlider*)sender;
+
+@end
+\endcode
 */

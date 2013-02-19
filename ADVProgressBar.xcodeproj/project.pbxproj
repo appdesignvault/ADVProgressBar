@@ -14,6 +14,7 @@
 		92EC8ECD16C0BBC20087B43B /* mainpage.dox in Resources */ = {isa = PBXBuildFile; fileRef = 92EC8ECC16C0BBC20087B43B /* mainpage.dox */; };
 		92ED54B116AC27F0006A1C73 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 92ED54AF16AC27F0006A1C73 /* LICENSE.txt */; };
 		92ED54B216AC27F0006A1C73 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 92ED54B016AC27F0006A1C73 /* README.md */; };
+		92EE065B16D33F9100D3A01D /* editorMenu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 92EE065A16D33F9100D3A01D /* editorMenu.jpg */; };
 		92EEEEDB16BF57DA007610B9 /* Doxyfile in Resources */ = {isa = PBXBuildFile; fileRef = 92EEEE7C16BF57DA007610B9 /* Doxyfile */; };
 		ECE9A478150A435E0076F0C5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECE9A477150A435E0076F0C5 /* UIKit.framework */; };
 		ECE9A47A150A435E0076F0C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECE9A479150A435E0076F0C5 /* Foundation.framework */; };
@@ -46,6 +47,7 @@
 		92EC8ECC16C0BBC20087B43B /* mainpage.dox */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mainpage.dox; sourceTree = "<group>"; };
 		92ED54AF16AC27F0006A1C73 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		92ED54B016AC27F0006A1C73 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		92EE065A16D33F9100D3A01D /* editorMenu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = editorMenu.jpg; sourceTree = "<group>"; };
 		92EEEE7C16BF57DA007610B9 /* Doxyfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Doxyfile; sourceTree = "<group>"; };
 		ECE9A473150A435E0076F0C5 /* ADVProgressBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ADVProgressBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECE9A477150A435E0076F0C5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -93,6 +95,7 @@
 		92EC8ECF16C0C92C0087B43B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				92EE065A16D33F9100D3A01D /* editorMenu.jpg */,
 				92972F2F16D0ACD8009F08AA /* storyboard0.jpg */,
 				92972F3016D0ACD8009F08AA /* storyboard1.jpg */,
 				92972F3116D0ACD8009F08AA /* storyboard2.jpg */,
@@ -268,6 +271,7 @@
 				92972F3216D0ACD8009F08AA /* storyboard0.jpg in Resources */,
 				92972F3316D0ACD8009F08AA /* storyboard1.jpg in Resources */,
 				92972F3416D0ACD8009F08AA /* storyboard2.jpg in Resources */,
+				92EE065B16D33F9100D3A01D /* editorMenu.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
