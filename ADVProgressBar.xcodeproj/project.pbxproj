@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		924FC2C816D4930100D3F305 /* storyboard3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 924FC2C616D4930100D3F305 /* storyboard3.jpg */; };
+		924FC2C916D4930100D3F305 /* storyboard4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 924FC2C716D4930100D3F305 /* storyboard4.jpg */; };
 		92972F3216D0ACD8009F08AA /* storyboard0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 92972F2F16D0ACD8009F08AA /* storyboard0.jpg */; };
 		92972F3316D0ACD8009F08AA /* storyboard1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 92972F3016D0ACD8009F08AA /* storyboard1.jpg */; };
 		92972F3416D0ACD8009F08AA /* storyboard2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 92972F3116D0ACD8009F08AA /* storyboard2.jpg */; };
@@ -40,6 +42,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		924FC2C616D4930100D3F305 /* storyboard3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = storyboard3.jpg; sourceTree = "<group>"; };
+		924FC2C716D4930100D3F305 /* storyboard4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = storyboard4.jpg; sourceTree = "<group>"; };
 		92972F2F16D0ACD8009F08AA /* storyboard0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = storyboard0.jpg; sourceTree = "<group>"; };
 		92972F3016D0ACD8009F08AA /* storyboard1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = storyboard1.jpg; sourceTree = "<group>"; };
 		92972F3116D0ACD8009F08AA /* storyboard2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = storyboard2.jpg; sourceTree = "<group>"; };
@@ -95,6 +99,8 @@
 		92EC8ECF16C0C92C0087B43B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				924FC2C616D4930100D3F305 /* storyboard3.jpg */,
+				924FC2C716D4930100D3F305 /* storyboard4.jpg */,
 				92EE065A16D33F9100D3A01D /* editorMenu.jpg */,
 				92972F2F16D0ACD8009F08AA /* storyboard0.jpg */,
 				92972F3016D0ACD8009F08AA /* storyboard1.jpg */,
@@ -272,6 +278,8 @@
 				92972F3316D0ACD8009F08AA /* storyboard1.jpg in Resources */,
 				92972F3416D0ACD8009F08AA /* storyboard2.jpg in Resources */,
 				92EE065B16D33F9100D3A01D /* editorMenu.jpg in Resources */,
+				924FC2C816D4930100D3F305 /* storyboard3.jpg in Resources */,
+				924FC2C916D4930100D3F305 /* storyboard4.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -64,6 +64,7 @@
  @param sender
     Slider that is sending the action message.
  */
--(IBAction)sliderValueChanged:(UISlider*)sender;
+- (IBAction)sliderValueChanged:(UISlider *)sender;
+
 
 @end

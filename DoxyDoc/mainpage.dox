@@ -55,35 +55,75 @@
  project for iPhone devices targeting iOS 5.0.
  
  To achieve the same demo app yourself, open Xcode and create a new project
- with the iOS\Application\Single View Application template and
- name it ADVProgressBar.
+ with the `iOS\Application\Single View Application template` and
+ name it `ADVProgressBar`.
  Enter ADV as Class Prefix; make sure the Device Family is set to iPhone,
- Use Storyboard and Use Automatic Reference Counting are checked.
+ `Use Storyboard` and `Use Automatic Reference Counting` are checked.
  
  Add `ADVPercentProgressBar.h` and `ADVPercentProgressBar.m` to your project.
  
- Open MainStoryboard.storyboard and go to Editor\Canvas\Show Bounds Rectangles
+ Open `MainStoryboard.storyboard` and go to `Editor\Canvas\Show Bounds Rectangles`
  (this will make it easier to see what we’re doing).
  @image html editorMenu.jpg
  
- Then drag a UIView from the Object Library into the view controller,
- and resize it to look like the following:
+ Then drag a `UIView` from the `Object Library` into the view controller.
  @image html storyboard0.jpg
  
  Then click on the UIView you added and go to the Identity Inspector.
  Set the class to `ADVPercentProgressBar`:
  @image html storyboard1.jpg
  
- Now connect this to outlets. Bring up the Assistant editor, and make sure that
- ADVViewController.h is visible and import the `ADVPercentProgressBar` header.
- Control-drag from the UIView down between the \@interface and \@end lines,
- connect it to an Outlet and named it `pbRangeValue`.
+ Now connect this to outlets.
+ 
+ Bring up the Assistant editor and make sure that the view controller’s header
+ file `ADVViewController.h` is displayed.
+ 
+ Add an `#import` directive to include the `ADVPercentProgressBar.h` header.
+ 
+ On the canvas, Control-drag from the `ADVPercentProgressBar` UIView
+ to the method declaration area in `ADVPercentProgressBar.h` (that is, between
+ the \@interface statement and the \@end statement).
+
+ Connect it to an Outlet and named it `pbRangeValue`.
  @image html storyboard2.jpg
  
- Repeat this for an other `ADVPercentProgressBar` views, but connect it
+ At this point `ADVViewController.h` should look like the following:
+\code
+#import <UIKit/UIKit.h>
+#import "ADVPercentProgressBar.h"
+
+@interface ADVViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet ADVPercentProgressBar *pbRangeValue;
+
+@end
+\endcode
+
+ Repeat this for an other `ADVPercentProgressBar` UIView, but connect it
  to an outlet called `pbRangePercent`.
  
- At this point ADVViewController.h should look like the following:
+ Finally, drag a `Slider` from the `Object Library` into the view controller.
+ 
+ This `Slider` will be used to animate our progress bars, then we have
+ to configure an action connection for it.
+ 
+ Control-drag from the `Slider` in the view to the method declaration area
+ in the header file.
+ 
+ In the Connection pop-up menu, choose `Action`.
+ 
+ In the Name field, enter `sliderValueChanged:`.
+
+ Make sure that the Type field contains `UISlider`.
+
+ Make sure that the Event pop-up menu contains `Value Changed`.
+ You specify the Value Changed event because you want the message to be sent
+ when the user slides the finger along the track.
+
+ Make sure that the Arguments pop-up menu contains `Sender`.
+ @image html storyboard3.jpg
+  
+ At the end, `ADVViewController.h` should look like the following:
 \code
 #import <UIKit/UIKit.h>
 #import "ADVPercentProgressBar.h"
@@ -93,8 +133,12 @@
 @property (weak, nonatomic) IBOutlet ADVPercentProgressBar *pbRangeValue;
 @property (weak, nonatomic) IBOutlet ADVPercentProgressBar *pbRangePercent;
 
--(IBAction)sliderValueChanged:(UISlider*)sender;
+- (IBAction)sliderValueChanged:(UISlider *)sender;
 
 @end
 \endcode
+
+ Now, resize the views, add four Labels and move them around to look like
+ the following:
+ @image html storyboard4.jpg
 */
