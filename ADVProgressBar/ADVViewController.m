@@ -109,7 +109,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     // ADVPercentProgressBar views loaded from storyboard
-    // MUST be initilized here...
+    // properties MUST be set here...
     
     
     [self.pbRangeValue setShowPercent:NO];
