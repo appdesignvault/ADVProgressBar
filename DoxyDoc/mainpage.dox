@@ -1,0 +1,179 @@
+//
+//  mainpage.dox
+//  ADVProgressBar
+//
+//
+/*
+ The MIT License
+ 
+ Copyright (c) 2013 Corrado Ubezio
+ https://github.com/corerd/
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+*/
+
+/*!
+ @mainpage Design documentation
+
+ Define the `ADVPercentProgressBar` class, that is a Custom UIView to depict
+ the progress of a task over time.
+ 
+ The amount of **progress** is displayed by a multiple colors horizontal bar
+ that represents a range of values.
+ 
+ The current **progress** is shown by the position of a cursor with the textual
+ indication of the amount of the task that has completed. The amount can be
+ displayed as integral value or a percentage of it.
+ 
+ The `ADVPercentProgressBar` class can be created and instantiated both in-code
+ (programmatically) or via a nib (storyboard).
+ 
+ It is also deployed a demo app to show how to use this class in various
+ scenarios. The source code can be found in the `ADVViewController.h` and
+ `ADVViewController.m` files.
+ 
+ The custom UIView class and the demo app have been developed as an Xcode 4.5.2
+ project for iPhone devices targeting iOS 5.0.
+
+ Using the `ADVPercentProgressBar` Custom UIView
+ ===============================================
+ The demo app looks like this:
+ @image html screenshot.jpg
+ 
+ To achieve the same yourself, open Xcode and create a new project
+ with the `iOS\Application\Single View Application` template and
+ name it `ADVProgressBar`.
+ Enter ADV as Class Prefix; make sure the Device Family is set to iPhone,
+ `Use Storyboard` and `Use Automatic Reference Counting` are checked.
+ 
+ Add `ADVPercentProgressBar.h` and `ADVPercentProgressBar.m` to your project.
+ 
+ Open `MainStoryboard.storyboard` and go to `Editor\Canvas\Show Bounds Rectangles`
+ (this will make it easier to see what we’re doing).
+ @image html editorMenu.jpg
+ 
+ Configuring the View
+ --------------------
+ Drag a `UIView` from the `Object Library` into the view controller.
+ @image html storyboard0.jpg
+ 
+ Then click on the UIView you added and go to the Identity Inspector.
+ Set the class to `ADVPercentProgressBar`:
+ @image html storyboard1.jpg
+ 
+ You won't be able to see what the `ADVPercentProgressBar` custom subview
+ actually looks like in the storyboard canvas, you'll see just its bounds.
+ 
+ Now connect the custom subview to outlets.
+ 
+ Bring up the Assistant editor and make sure that the view controller’s header
+ file `ADVViewController.h` is displayed.
+ 
+ Add an `#import` directive to include the `ADVPercentProgressBar.h` header.
+ 
+ On the canvas, Control-drag from the `ADVPercentProgressBar` UIView
+ to the method declaration area in `ADVPercentProgressBar.h` (that is, between
+ the \@interface statement and the \@end statement).
+
+ Connect it to an Outlet and named it `pbRangeValue`.
+ @image html storyboard2.jpg
+ 
+ At this point `ADVViewController.h` should look like the following:
+\code
+#import <UIKit/UIKit.h>
+#import "ADVPercentProgressBar.h"
+
+@interface ADVViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet ADVPercentProgressBar *pbRangeValue;
+
+@end
+\endcode
+
+ Repeat this for an other `ADVPercentProgressBar` UIView, but connect it
+ to an outlet called `pbRangePercent`.
+ 
+ Finally, drag a `Slider` from the `Object Library` into the view controller.
+ 
+ This `Slider` will be used to animate our progress bars, then we have
+ to configure an action connection for it.
+ 
+ Control-drag from the `Slider` in the view to the method declaration area
+ in the header file.
+ 
+ In the Connection pop-up menu, choose `Action`.
+ 
+ In the Name field, enter `sliderValueChanged:`.
+
+ Make sure that the Type field contains `UISlider`.
+
+ Make sure that the Event pop-up menu contains `Value Changed`.
+ You specify the Value Changed event because you want the message to be sent
+ when the user slides the thumb along the track.
+
+ Make sure that the Arguments pop-up menu contains `Sender`.
+ @image html storyboard3.jpg
+  
+ At the end, `ADVViewController.h` should look like the following:
+\code
+#import <UIKit/UIKit.h>
+#import "ADVPercentProgressBar.h"
+
+@interface ADVViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet ADVPercentProgressBar *pbRangeValue;
+@property (weak, nonatomic) IBOutlet ADVPercentProgressBar *pbRangePercent;
+
+- (IBAction)sliderValueChanged:(UISlider *)sender;
+
+@end
+\endcode
+
+ Now, resize the views, add four Labels and move them around to look like
+ the following:
+ @image html storyboard4.jpg
+ 
+ Implementing the View Controller
+ --------------------------------
+ Select `ADVViewController.m` in the project navigator and find the `viewDidLoad`
+ stub implementation that Xcode added for you.
+ 
+ Before the `[super viewDidLoad];` statement, create and instantiate
+ programmatically a bunch of `ADVPercentProgressBar` custom views.
+ 
+ As you can see in the provided `ADVViewController.m` file, this follows the
+ pattern:
+\code
+    ADVPercentProgressBar *progressBar =
+    [[ADVPercentProgressBar alloc] initWithFrame:CGRectMake(X, Y, hDim, vDim)
+                             andProgressBarColor:someADVProgressBarColor];
+
+    // set ADVPercentProgressBar instance properties
+\endcode
+
+ After the `[super viewDidLoad];` statement, set the properties of the
+ `ADVPercentProgressBar` views loaded from storyboard. In this case they are not
+ required the origin point and the size of the views because they have been
+ implicitly set when drown.
+ 
+ Finally, complete the stub implementation of the `sliderValueChanged:` method
+ to animate the progress bars when the user slides the thumb along the track.
+ I have used the `percentProgressBars` and `integralProgressBars` arrays
+ to keep track of the `ADVPercentProgressBar` views.
+*/
