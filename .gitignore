@@ -1,0 +1,14 @@
+# OS generated files #
+######################
+.DS_Store
+*~
+*.bak
+
+# XCODE generated files #
+#########################
+project.xcworkspace/
+xcuserdata/
+
+# DOXYGEN generated files #
+#########################
+html/
